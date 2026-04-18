@@ -11,101 +11,92 @@
     --navy:#223670;--gold:#D0A900;--gold-light:#FFF8D6;
     --bg:#F7F8FA;--white:#fff;--border:#E0E4EE;
     --text:#1a2340;--muted:#6b7a99;--radius:12px;
-    --x-color:#000;--threads-color:#1a1a1a;
   }
   body{font-family:'Noto Sans JP',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
-
   .header{background:var(--navy);padding:20px 24px;text-align:center}
   .header h1{font-family:'Noto Serif JP',serif;font-size:22px;color:#fff;letter-spacing:0.05em}
   .header p{font-size:12px;color:#a8b4d0;margin-top:4px}
-
   .tabs{display:flex;background:var(--white);border-bottom:1px solid var(--border)}
   .tab{flex:1;padding:14px;text-align:center;font-size:14px;font-weight:500;cursor:pointer;border-bottom:3px solid transparent;color:var(--muted);transition:all .2s}
   .tab.active{color:var(--navy);border-bottom-color:var(--gold);background:var(--gold-light)}
-
   .panel{display:none;padding:20px}
   .panel.active{display:block}
-
   .card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:20px;margin-bottom:16px}
   .card-title{font-size:13px;font-weight:700;color:var(--navy);margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid var(--gold-light)}
-
   label{display:block;font-size:12px;font-weight:500;color:var(--muted);margin-bottom:6px;margin-top:14px}
   label:first-of-type{margin-top:0}
-  input,select,textarea{width:100%;padding:10px 12px;border:1px solid var(--border);border-radius:8px;font-family:'Noto Sans JP',sans-serif;font-size:14px;color:var(--text);background:var(--bg);outline:none;transition:border .2s}
-  input:focus,select:focus,textarea:focus{border-color:var(--navy);background:var(--white)}
+  input[type=text],select,textarea{width:100%;padding:10px 12px;border:1px solid var(--border);border-radius:8px;font-family:'Noto Sans JP',sans-serif;font-size:14px;color:var(--text);background:var(--bg);outline:none;transition:border .2s}
+  input[type=text]:focus,select:focus,textarea:focus{border-color:var(--navy);background:var(--white)}
   textarea{resize:vertical;line-height:1.7}
-
   .btn{display:block;width:100%;padding:14px;background:var(--navy);color:#fff;border:none;border-radius:10px;font-size:15px;font-weight:700;font-family:'Noto Sans JP',sans-serif;cursor:pointer;transition:all .2s;margin-top:16px}
   .btn:hover{background:#1a2a58;transform:translateY(-1px)}
   .btn:active{transform:translateY(0)}
   .btn:disabled{background:#aab;cursor:not-allowed;transform:none}
-
-  .rewrite-types{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-  .rtype{padding:10px 8px;border:1.5px solid var(--border);border-radius:8px;text-align:center;font-size:12px;cursor:pointer;transition:all .2s;line-height:1.4}
-  .rtype.selected{border-color:var(--navy);background:var(--navy);color:#fff}
-
-  .output-box{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:20px;margin-top:16px;display:none}
-  .output-box.show{display:block}
-  .output-label{font-size:11px;font-weight:700;color:var(--gold);letter-spacing:0.1em;margin-bottom:10px}
-  .output-text{font-size:14px;line-height:1.9;color:var(--text);white-space:pre-wrap;word-break:break-word}
-
-  .section{margin-top:20px;display:none}
-  .section.show{display:block}
-  .section-header{font-size:14px;font-weight:700;color:var(--navy);margin-bottom:14px;display:flex;align-items:center;gap:8px;padding:12px 16px;background:var(--gold-light);border-radius:10px;border-left:4px solid var(--gold)}
-
-  .sns-tabs{display:flex;gap:8px;margin-bottom:14px}
-  .sns-tab{flex:1;padding:10px;text-align:center;font-size:13px;font-weight:700;border-radius:8px;cursor:pointer;border:1.5px solid var(--border);color:var(--muted);transition:all .2s}
-  .sns-tab.active-x{border-color:#000;background:#000;color:#fff}
-  .sns-tab.active-threads{border-color:#1a1a1a;background:#1a1a1a;color:#fff}
-
-  .sns-panel{display:none}
-  .sns-panel.active{display:block}
-
-  .post-card{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:16px;margin-bottom:12px}
-  .post-type{font-size:11px;font-weight:700;letter-spacing:0.08em;margin-bottom:8px;display:flex;align-items:center;justify-content:space-between}
-  .post-type-x{color:#000}
-  .post-type-threads{color:#1a1a1a}
-  .post-text{font-size:13px;line-height:1.8;color:var(--text);white-space:pre-wrap;word-break:break-word;background:var(--bg);padding:12px;border-radius:8px;min-height:60px}
-  .char-badge{font-size:11px;font-weight:700;padding:2px 8px;border-radius:20px;background:#f0f0f0;color:#555}
-  .char-badge.over{background:#ffe0e0;color:#c00}
-
-  .copy-btn{margin-top:10px;padding:6px 14px;background:var(--navy);color:#fff;border:none;border-radius:6px;font-size:12px;cursor:pointer;font-family:'Noto Sans JP',sans-serif;font-weight:500}
-  .copy-btn:hover{background:#1a2a58}
-
-  .copy-all-btn{display:block;width:100%;padding:10px;background:transparent;border:1.5px solid var(--navy);border-radius:8px;font-size:13px;font-weight:700;color:var(--navy);cursor:pointer;margin-top:12px;font-family:'Noto Sans JP',sans-serif}
-  .copy-all-btn:hover{background:var(--navy);color:#fff}
-
-  .thumb-section{margin-top:16px;display:none}
-  .thumb-section.show{display:block}
-  .thumb-header{font-size:13px;font-weight:700;color:var(--navy);margin-bottom:12px;display:flex;align-items:center;gap:6px;padding:10px 14px;background:#f0f4ff;border-radius:8px}
-  .thumb-card{background:var(--gold-light);border:1px solid var(--gold);border-radius:10px;padding:14px;margin-bottom:10px}
-  .thumb-type{font-size:11px;font-weight:700;color:#8a6500;letter-spacing:0.08em;margin-bottom:6px}
-  .thumb-prompt{font-size:12px;line-height:1.7;color:#3a3000;font-family:monospace;word-break:break-all}
-
-  .loading{text-align:center;padding:20px;color:var(--muted);font-size:14px;display:none}
-  .loading.show{display:block}
-  .dot{display:inline-block;animation:blink 1.2s infinite}
-  .dot:nth-child(2){animation-delay:.4s}
-  .dot:nth-child(3){animation-delay:.8s}
-  @keyframes blink{0%,80%,100%{opacity:0}40%{opacity:1}}
-
-  .badge{display:inline-block;padding:2px 8px;background:var(--navy);color:#fff;border-radius:20px;font-size:10px;font-weight:700;margin-left:4px}
-  .char-count{font-size:11px;color:var(--muted);text-align:right;margin-top:4px}
-  .note{font-size:11px;color:var(--muted);margin-top:8px;line-height:1.6;padding:8px;background:var(--bg);border-radius:6px}
-
-  .flow-bar{display:flex;align-items:center;justify-content:center;gap:8px;padding:12px;background:#f0f4ff;border-radius:10px;margin-bottom:16px;font-size:12px;color:var(--navy);font-weight:500}
-  .flow-step{padding:4px 10px;background:var(--navy);color:#fff;border-radius:20px;font-size:11px}
-  .flow-arrow{color:var(--gold);font-size:16px}
+.target-wrap{border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-top:0}
+.target-cat{border-bottom:1px solid var(--border)}
+.target-cat
+.target-cat-head{padding:8px 12px;background:var(--bg);font-size:11px;font-weight:700;color:var(--navy);cursor:pointer;display:flex;align-items:center;justify-content:space-between;user-select:none}
+.target-cat-head
+.target-cat-arrow{font-size:10px;transition:transform .2s;color:var(--muted)}
+.target-cat-body{display:none;padding:8px 10px;display:flex;flex-wrap:wrap;gap:6px}
+.target-chip{padding:5px 10px;border:1.5px solid var(--border);border-radius:20px;font-size:11px;cursor:pointer;transition:all .2s;background:var(--white);color:var(--text);user-select:none}
+.target-chip.selected{border-color:var(--navy);background:var(--navy);color:#fff}
+.target-chip:hover:not(.selected){border-color:var(--navy);color:var(--navy)}
+.selected-preview{font-size:11px;color:var(--navy);margin-top:8px;padding:6px 10px;background:var(--gold-light);border-radius:6px;min-height:28px;line-height:1.6}
+.clear-btn{font-size:10px;color:var(--muted);text-decoration:underline;cursor:pointer;margin-left:8px}
+.rewrite-types{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.rtype{padding:10px 8px;border:1.5px solid var(--border);border-radius:8px;text-align:center;font-size:12px;cursor:pointer;transition:all .2s;line-height:1.4}
+.rtype.selected{border-color:var(--navy);background:var(--navy);color:#fff}
+.output-box{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:20px;margin-top:16px;display:none}
+.output-box.show{display:block}
+.output-label{font-size:11px;font-weight:700;color:var(--gold);letter-spacing:0.1em;margin-bottom:10px}
+.output-text{font-size:14px;line-height:1.9;color:var(--text);white-space:pre-wrap;word-break:break-word}
+.section{margin-top:20px;display:none}
+.section.show{display:block}
+.section-header{font-size:14px;font-weight:700;color:var(--navy);margin-bottom:14px;display:flex;align-items:center;gap:8px;padding:12px 16px;background:var(--gold-light);border-radius:10px;border-left:4px solid var(--gold)}
+.sns-tabs{display:flex;gap:8px;margin-bottom:14px}
+.sns-tab{flex:1;padding:10px;text-align:center;font-size:13px;font-weight:700;border-radius:8px;cursor:pointer;border:1.5px solid var(--border);color:var(--muted);transition:all .2s}
+.sns-tab.active-x{border-color:#000;background:#000;color:#fff}
+.sns-tab.active-threads{border-color:#1a1a1a;background:#1a1a1a;color:#fff}
+.sns-panel{display:none}
+.sns-panel.active{display:block}
+.post-card{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:16px;margin-bottom:12px}
+.post-type{font-size:11px;font-weight:700;letter-spacing:0.08em;margin-bottom:8px;display:flex;align-items:center;justify-content:space-between}
+.post-type-x{color:#000}
+.post-type-threads{color:#1a1a1a}
+.post-text{font-size:13px;line-height:1.8;color:var(--text);white-space:pre-wrap;word-break:break-word;background:var(--bg);padding:12px;border-radius:8px;min-height:60px}
+.char-badge{font-size:11px;font-weight:700;padding:2px 8px;border-radius:20px;background:#f0f0f0;color:#555}
+.char-badge.over{background:#ffe0e0;color:#c00}
+.copy-btn{margin-top:10px;padding:6px 14px;background:var(--navy);color:#fff;border:none;border-radius:6px;font-size:12px;cursor:pointer;font-family:'Noto Sans JP',sans-serif;font-weight:500}
+.copy-btn
+.copy-all-btn{display:block;width:100%;padding:10px;background:transparent;border:1.5px solid var(--navy);border-radius:8px;font-size:13px;font-weight:700;color:var(--navy);cursor:pointer;margin-top:12px;font-family:'Noto Sans JP',sans-serif}
+.copy-all-btn:hover{background:var(--navy);color:#fff}
+.thumb-section{margin-top:16px;display:none}
+.thumb-section.show{display:block}
+.thumb-header{font-size:13px;font-weight:700;color:var(--navy);margin-bottom:12px;display:flex;align-items:center;gap:6px;padding:10px 14px;background:#f0f4ff;border-radius:8px}
+.thumb-card{background:var(--gold-light);border:1px solid var(--gold);border-radius:10px;padding:14px;margin-bottom:10px}
+.thumb-type{font-size:11px;font-weight:700;color:#8a6500;letter-spacing:0.08em;margin-bottom:6px}
+.thumb-prompt{font-size:12px;line-height:1.7;color:#3a3000;font-family:monospace;word-break:break-all}
+.loading{text-align:center;padding:20px;color:var(--muted);font-size:14px;display:none}
+.loading.show{display:block}
+.dot{display:inline-block;animation:blink 1.2s infinite}
+.dot:nth-child(2){animation-delay:.4s}
+.dot:nth-child(3){animation-delay:.8s}
+@keyframes blink{0%,80%,100%{opacity:0}40%{opacity:1}}
+.badge{display:inline-block;padding:2px 8px;background:var(--navy);color:#fff;border-radius:20px;font-size:10px;font-weight:700;margin-left:4px}
+.char-count{font-size:11px;color:var(--muted);text-align:right;margin-top:4px}
+.note-hint{font-size:11px;color:var(--muted);margin-top:8px;line-height:1.6;padding:8px;background:var(--bg);border-radius:6px}
+.flow-bar{display:flex;align-items:center;justify-content:center;gap:8px;padding:12px;background:#f0f4ff;border-radius:10px;margin:12px;font-size:12px;color:var(--navy);font-weight:500;flex-wrap:wrap}
+.flow-step{padding:4px 10px;background:var(--navy);color:#fff;border-radius:20px;font-size:11px}
+.flow-arrow{color:var(--gold);font-size:16px}
 </style>
 </head>
 <body>
-
 <div class="header">
   <h1>✏️ note磨きくん</h1>
   <p>記事作成からSNS集客まで、ワンストップで完結</p>
 </div>
-
-<div class="flow-bar" style="margin:12px;border-radius:10px">
+<div class="flow-bar">
   <span class="flow-step">①note記事</span>
   <span class="flow-arrow">→</span>
   <span class="flow-step">②サムネ</span>
@@ -114,27 +105,74 @@
   <span class="flow-arrow">→</span>
   <span class="flow-step">④Threads</span>
 </div>
-
 <div class="tabs">
   <div class="tab active" onclick="switchTab('new')">📝 新規作成</div>
   <div class="tab" onclick="switchTab('rewrite')">✨ リライト</div>
 </div>
-
+<!-- ターゲット選択テンプレート（JS で複製） -->
+<template id="target-tmpl">
+  <div>
+    <div style="font-size:12px;font-weight:500;color:var(--muted);margin-bottom:6px;margin-top:14px">ターゲット読者（複数選択可）</div>
+    <div class="target-wrap">
+      <div class="target-cat">
+        <div class="target-cat-head" onclick="toggleCat(this)">💼 ビジネス系 <span class="target-cat-arrow">▼</span></div>
+        <div class="target-cat-body">
+          <span class="target-chip" onclick="toggleChip(this)">中小企業経営者</span>
+          <span class="target-chip" onclick="toggleChip(this)">個人事業主</span>
+          <span class="target-chip" onclick="toggleChip(this)">一般ビジネスパーソン</span>
+          <span class="target-chip" onclick="toggleChip(this)">スタートアップ経営者</span>
+        </div>
+      </div>
+      <div class="target-cat">
+        <div class="target-cat-head" onclick="toggleCat(this)">⚖️ 士業・専門家 <span class="target-cat-arrow">▼</span></div>
+        <div class="target-cat-body">
+          <span class="target-chip" onclick="toggleChip(this)">税理士・会計士</span>
+          <span class="target-chip" onclick="toggleChip(this)">行政書士・社労士</span>
+          <span class="target-chip" onclick="toggleChip(this)">弁護士・法律家</span>
+          <span class="target-chip" onclick="toggleChip(this)">薬剤師・医療従事者</span>
+        </div>
+      </div>
+      <div class="target-cat">
+        <div class="target-cat-head" onclick="toggleCat(this)">🏪 業種特化 <span class="target-cat-arrow">▼</span></div>
+        <div class="target-cat-body">
+          <span class="target-chip" onclick="toggleChip(this)">飲食店・飲食業</span>
+          <span class="target-chip" onclick="toggleChip(this)">美容サロン・美容業</span>
+          <span class="target-chip" onclick="toggleChip(this)">製造業</span>
+          <span class="target-chip" onclick="toggleChip(this)">小売業・EC事業者</span>
+          <span class="target-chip" onclick="toggleChip(this)">不動産</span>
+        </div>
+      </div>
+      <div class="target-cat">
+        <div class="target-cat-head" onclick="toggleCat(this)">🌏 インバウンド・観光系 <span class="target-cat-arrow">▼</span></div>
+        <div class="target-cat-body">
+          <span class="target-chip" onclick="toggleChip(this)">インバウンド事業者</span>
+          <span class="target-chip" onclick="toggleChip(this)">観光業・宿泊業</span>
+          <span class="target-chip" onclick="toggleChip(this)">多言語対応店舗</span>
+          <span class="target-chip" onclick="toggleChip(this)">地域観光・地方創生</span>
+          <span class="target-chip" onclick="toggleChip(this)">通訳・翻訳・ガイド</span>
+          <span class="target-chip" onclick="toggleChip(this)">自治体</span>
+        </div>
+      </div>
+      <div class="target-cat">
+        <div class="target-cat-head" onclick="toggleCat(this)">✨ その他 <span class="target-cat-arrow">▼</span></div>
+        <div class="target-cat-body">
+          <span class="target-chip" onclick="toggleChip(this)">AIツール興味層</span>
+          <span class="target-chip" onclick="toggleChip(this)">副業・複業挑戦者</span>
+          <span class="target-chip" onclick="toggleChip(this)">シニア経営者・起業家</span>
+          <span class="target-chip" onclick="toggleChip(this)">地方の中小企業・商店</span>
+        </div>
+      </div>
+    </div>
+    <div class="selected-preview">選択中：なし <span class="clear-btn" onclick="clearChips(this)">クリア</span></div>
+  </div>
+</template>
 <!-- 新規作成タブ -->
 <div id="panel-new" class="panel active">
   <div class="card">
     <div class="card-title">📌 note記事の基本設定</div>
     <label>記事テーマ・タイトル案</label>
     <input type="text" id="new-theme" placeholder="例：中小企業がSNS集客を始めるべき理由">
-    <label>ターゲット読者</label>
-    <select id="new-target">
-      <option value="中小企業の経営者">中小企業の経営者</option>
-      <option value="税理士・士業">税理士・士業</option>
-      <option value="飲食店オーナー">飲食店オーナー</option>
-      <option value="美容室・サロン経営者">美容室・サロン経営者</option>
-      <option value="製造業の経営者">製造業の経営者</option>
-      <option value="フリーランス・個人事業主">フリーランス・個人事業主</option>
-    </select>
+    <div id="target-new-wrap"></div>
     <label>文体・トーン</label>
     <select id="new-tone">
       <option value="共感ベースで背中を押す温かいトーン">共感・背中を押す（温かい）</option>
@@ -151,40 +189,30 @@
     <label>補足情報（実体験・強調したいこと）</label>
     <textarea id="new-memo" rows="3" placeholder="例：AI活用の事例を入れてほしい、具体的な数字を使ってほしいなど"></textarea>
     <button class="btn" id="btn-new" onclick="generateNew()">📝 記事を生成してSNS投稿文も作る</button>
+    <div class="note-hint">※ 見出しは # と ## で出力されます。noteに貼り付け後、目次設定をしてください。</div>
   </div>
-
   <div class="loading" id="loading-new">
     <span>記事を生成中</span><span class="dot">．</span><span class="dot">．</span><span class="dot">．</span>
   </div>
-
   <div class="output-box" id="output-new">
-    <div class="output-label">生成された記事</div>
+    <div class="output-label">生成された記事（# 大見出し　## 中見出し）</div>
     <div class="output-text" id="output-new-text"></div>
     <button class="copy-all-btn" onclick="copyText('output-new-text')">📋 記事をコピー</button>
   </div>
-
-  <!-- サムネプロンプト -->
   <div class="thumb-section" id="thumb-new">
     <div class="thumb-header">🎨 MidJourney V8 サムネプロンプト <span class="badge">3種</span></div>
     <div id="thumb-new-cards"></div>
   </div>
-
-  <!-- SNS集客投稿 -->
   <div class="section" id="sns-new">
     <div class="section-header">📣 SNS集客投稿文 <span class="badge">X + Threads</span></div>
     <div class="sns-tabs">
       <div class="sns-tab active-x" id="tab-x-new" onclick="switchSns('new','x')">𝕏 X（Twitter）</div>
       <div class="sns-tab" id="tab-threads-new" onclick="switchSns('new','threads')">🧵 Threads</div>
     </div>
-    <div class="sns-panel active" id="sns-x-new">
-      <div id="x-posts-new"></div>
-    </div>
-    <div class="sns-panel" id="sns-threads-new">
-      <div id="threads-posts-new"></div>
-    </div>
+    <div class="sns-panel active" id="sns-x-new"><div id="x-posts-new"></div></div>
+    <div class="sns-panel" id="sns-threads-new"><div id="threads-posts-new"></div></div>
   </div>
 </div>
-
 <!-- リライトタブ -->
 <div id="panel-rewrite" class="panel">
   <div class="card">
@@ -202,80 +230,101 @@
       <div class="rtype" onclick="toggleType(this)" data-type="SEOを意識したキーワードを自然に盛り込む">🔍 SEO強化</div>
       <div class="rtype" onclick="toggleType(this)" data-type="全体をプロのWebライター視点でフルリライトする">✨ 全体フルリライト</div>
     </div>
-    <label>ターゲット読者</label>
-    <select id="rewrite-target">
-      <option value="中小企業の経営者">中小企業の経営者</option>
-      <option value="税理士・士業">税理士・士業</option>
-      <option value="飲食店オーナー">飲食店オーナー</option>
-      <option value="美容室・サロン経営者">美容室・サロン経営者</option>
-      <option value="製造業の経営者">製造業の経営者</option>
-      <option value="フリーランス・個人事業主">フリーランス・個人事業主</option>
-    </select>
+    <div id="target-rewrite-wrap"></div>
     <button class="btn" id="btn-rewrite" onclick="generateRewrite()">✨ リライトしてSNS投稿文も作る</button>
-    <div class="note">改善タイプは複数選択できます。全体フルリライトを選ぶと他の指定は無視されます。</div>
+    <div class="note-hint">改善タイプは複数選択できます。全体フルリライトを選ぶと他の指定は無視されます。見出しは # と ## で出力されます。</div>
   </div>
-
   <div class="loading" id="loading-rewrite">
     <span>リライト中</span><span class="dot">．</span><span class="dot">．</span><span class="dot">．</span>
   </div>
-
   <div class="output-box" id="output-rewrite">
-    <div class="output-label">リライト後の文章</div>
+    <div class="output-label">リライト後の文章（# 大見出し　## 中見出し）</div>
     <div class="output-text" id="output-rewrite-text"></div>
     <button class="copy-all-btn" onclick="copyText('output-rewrite-text')">📋 リライト文をコピー</button>
   </div>
-
   <div class="thumb-section" id="thumb-rewrite">
     <div class="thumb-header">🎨 MidJourney V8 サムネプロンプト <span class="badge">3種</span></div>
     <div id="thumb-rewrite-cards"></div>
   </div>
-
   <div class="section" id="sns-rewrite">
     <div class="section-header">📣 SNS集客投稿文 <span class="badge">X + Threads</span></div>
     <div class="sns-tabs">
       <div class="sns-tab active-x" id="tab-x-rewrite" onclick="switchSns('rewrite','x')">𝕏 X（Twitter）</div>
       <div class="sns-tab" id="tab-threads-rewrite" onclick="switchSns('rewrite','threads')">🧵 Threads</div>
     </div>
-    <div class="sns-panel active" id="sns-x-rewrite">
-      <div id="x-posts-rewrite"></div>
-    </div>
-    <div class="sns-panel" id="sns-threads-rewrite">
-      <div id="threads-posts-rewrite"></div>
-    </div>
+    <div class="sns-panel active" id="sns-x-rewrite"><div id="x-posts-rewrite"></div></div>
+    <div class="sns-panel" id="sns-threads-rewrite"><div id="threads-posts-rewrite"></div></div>
   </div>
 </div>
-
 <script>
+const API_URL = 'https://note-migaki-api.yymmatsu.workers.dev';
+
+// ターゲット選択UIを各タブに挿入
+['new','rewrite'].forEach(mode=>{
+  const tmpl = document.getElementById('target-tmpl').content.cloneNode(true);
+  document.getElementById('target-'+mode+'-wrap').appendChild(tmpl);
+});
+
+function toggleCat(head){
+  const body = head.nextElementSibling;
+  const arrow = head.querySelector('.target-cat-arrow');
+  const open = body.style.display === 'none';
+  body.style.display = open ? 'flex' : 'none';
+  arrow.style.transform = open ? 'rotate(180deg)' : '';
+}
+
+function toggleChip(chip){
+  chip.classList.toggle('selected');
+  updatePreview(chip.closest('.target-wrap'));
+}
+
+function updatePreview(wrap){
+  const selected = Array.from(wrap.querySelectorAll('.target-chip.selected')).map(c=>c.textContent);
+  const preview = wrap.nextElementSibling;
+  preview.innerHTML = selected.length
+    ? '選択中：' + selected.join('・') + ' <span class="clear-btn" onclick="clearChips(this)">クリア</span>'
+    : '選択中：なし <span class="clear-btn" onclick="clearChips(this)">クリア</span>';
+}
+
+function clearChips(btn){
+  const wrap = btn.closest('.selected-preview').previousElementSibling;
+  wrap.querySelectorAll('.target-chip.selected').forEach(c=>c.classList.remove('selected'));
+  updatePreview(wrap);
+}
+
+function getTargets(mode){
+  const wrap = document.getElementById('target-'+mode+'-wrap').querySelector('.target-wrap');
+  const selected = Array.from(wrap.querySelectorAll('.target-chip.selected')).map(c=>c.textContent);
+  return selected.length ? selected.join('・') : '中小企業経営者';
+}
+
 function switchTab(name){
   document.querySelectorAll('.tab').forEach((t,i)=>t.classList.toggle('active',['new','rewrite'][i]===name));
   document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
   document.getElementById('panel-'+name).classList.add('active');
 }
-
-function switchSns(mode, sns){
-  const other = sns==='x'?'threads':'x';
+function switchSns(mode,sns){
+  const other=sns==='x'?'threads':'x';
   document.getElementById('sns-'+sns+'-'+mode).classList.add('active');
   document.getElementById('sns-'+other+'-'+mode).classList.remove('active');
   document.getElementById('tab-'+sns+'-'+mode).classList.add('active-'+sns);
   document.getElementById('tab-'+other+'-'+mode).classList.remove('active-'+other);
 }
-
 document.getElementById('rewrite-input').addEventListener('input',function(){
   document.getElementById('char-count').textContent=this.value.length+'文字';
 });
-
 function toggleType(el){el.classList.toggle('selected')}
 function getSelectedTypes(){
   return Array.from(document.querySelectorAll('.rtype.selected')).map(e=>e.dataset.type);
 }
 
-async function callClaude(system, user){
-  const res=await fetch('https://api.anthropic.com/v1/messages',{
+async function callClaude(system,user){
+  const res=await fetch(API_URL,{
     method:'POST',
     headers:{'Content-Type':'application/json'},
     body:JSON.stringify({
       model:'claude-sonnet-4-20250514',
-      max_tokens:1000,
+      max_tokens:2000,
       system,
       messages:[{role:'user',content:user}]
     })
@@ -284,7 +333,7 @@ async function callClaude(system, user){
   return data.content?.[0]?.text||'エラーが発生しました。';
 }
 
-async function generateThumbPrompts(title, keywords, container){
+async function generateThumbPrompts(title,keywords,container){
   const system=`あなたはMidJourney V8専門のプロンプトエンジニアです。JSON形式のみで返してください。コードブロック不要。{"prompts":[{"type":"タイプ名","prompt":"英語プロンプト"},{"type":"タイプ名","prompt":"英語プロンプト"},{"type":"タイプ名","prompt":"英語プロンプト"}]}`;
   const user=`記事タイトル：${title}
 キーワード：${keywords}
@@ -309,64 +358,37 @@ async function generateThumbPrompts(title, keywords, container){
   }
 }
 
-async function generateSNSPosts(articleSummary, target, mode){
-  const xSystem=`あなたはSNS集客のプロです。note記事への誘導投稿を生成します。必ずJSONのみで返してください。コードブロック不要。{"posts":[{"type":"パターン名","text":"投稿文"},{"type":"パターン名","text":"投稿文"},{"type":"パターン名","text":"投稿文"}]}`;
+async function generateSNSPosts(articleSummary,target,mode){
+  const xSystem=`あなたはSNS集客のプロです。JSON形式のみで返してください。コードブロック不要。{"posts":[{"type":"パターン名","text":"投稿文"},{"type":"パターン名","text":"投稿文"},{"type":"パターン名","text":"投稿文"}]}`;
   const xUser=`以下のnote記事の要約をもとに、X（Twitter）集客投稿を3パターン生成してください。
 記事概要：${articleSummary}
 ターゲット：${target}
-条件：
-・各投稿は120文字以内（ハッシュタグ含む）
-・末尾に「👉 noteで全文読めます」を入れること
-・ハッシュタグは2〜3個
-パターン1：問題提起型（読者の悩みに刺さる問いかけ）
-パターン2：ビフォーアフター型（変化・気づきを見せる）
-パターン3：共感・ストーリー型（感情で引く）`;
-
-  const thSystem=`あなたはSNS集客のプロです。Threads投稿を生成します。必ずJSONのみで返してください。コードブロック不要。{"posts":[{"type":"パターン名","text":"投稿文"},{"type":"パターン名","text":"投稿文"},{"type":"パターン名","text":"投稿文"}]}`;
+条件：各投稿は120文字以内（ハッシュタグ含む）、末尾に「👉 noteで全文読めます」を入れること、ハッシュタグは2〜3個
+パターン1：問題提起型、パターン2：ビフォーアフター型、パターン3：共感・ストーリー型`;
+  const thSystem=`あなたはSNS集客のプロです。JSON形式のみで返してください。コードブロック不要。{"posts":[{"type":"パターン名","text":"投稿文"},{"type":"パターン名","text":"投稿文"},{"type":"パターン名","text":"投稿文"}]}`;
   const thUser=`以下のnote記事の要約をもとに、Threads集客投稿を3パターン生成してください。
 記事概要：${articleSummary}
 ターゲット：${target}
-条件：
-・各投稿は400〜500文字程度
-・改行を活用してスマホで読みやすくすること
-・末尾に「続きはnoteで👇」を入れること
-・ハッシュタグは3〜4個
-パターン1：問題提起型（読者の悩みから入る）
-パターン2：ビフォーアフター型（変化を具体的に見せる）
-パターン3：共感・ストーリー型（経営者目線のエピソード）`;
-
+条件：各投稿は400〜500文字程度、改行を活用してスマホで読みやすくすること、末尾に「続きはnoteで👇」を入れること、ハッシュタグは3〜4個
+パターン1：問題提起型、パターン2：ビフォーアフター型、パターン3：共感・ストーリー型`;
   try{
-    const [xRaw, thRaw]=await Promise.all([
-      callClaude(xSystem, xUser),
-      callClaude(thSystem, thUser)
-    ]);
-
+    const [xRaw,thRaw]=await Promise.all([callClaude(xSystem,xUser),callClaude(thSystem,thUser)]);
     const xData=JSON.parse(xRaw.replace(/```json|```/g,'').trim());
     const thData=JSON.parse(thRaw.replace(/```json|```/g,'').trim());
-
     document.getElementById('x-posts-'+mode).innerHTML=xData.posts.map((p,i)=>{
-      const len=p.text.length;
-      const over=len>140;
+      const len=p.text.length;const over=len>140;
       return `<div class="post-card">
-        <div class="post-type post-type-x">
-          <span>𝕏 ${p.type}</span>
-          <span class="char-badge${over?' over':''}"> ${len}文字</span>
-        </div>
+        <div class="post-type post-type-x"><span>𝕏 ${p.type}</span><span class="char-badge${over?' over':''}">${len}文字</span></div>
         <div class="post-text" id="xp${i}-${mode}">${p.text}</div>
         <button class="copy-btn" onclick="copyText('xp${i}-${mode}')">コピー</button>
       </div>`;
     }).join('');
-
     document.getElementById('threads-posts-'+mode).innerHTML=thData.posts.map((p,i)=>`
       <div class="post-card">
-        <div class="post-type post-type-threads">
-          <span>🧵 ${p.type}</span>
-          <span class="char-badge">${p.text.length}文字</span>
-        </div>
+        <div class="post-type post-type-threads"><span>🧵 ${p.type}</span><span class="char-badge">${p.text.length}文字</span></div>
         <div class="post-text" id="thp${i}-${mode}">${p.text}</div>
         <button class="copy-btn" onclick="copyText('thp${i}-${mode}')">コピー</button>
       </div>`).join('');
-
     document.getElementById('sns-'+mode).classList.add('show');
   }catch(e){
     document.getElementById('x-posts-'+mode).innerHTML='<p style="font-size:12px;color:#999">生成に失敗しました</p>';
@@ -377,14 +399,14 @@ async function generateSNSPosts(articleSummary, target, mode){
 async function generateNew(){
   const theme=document.getElementById('new-theme').value.trim();
   if(!theme){alert('記事テーマを入力してください');return;}
-  const target=document.getElementById('new-target').value;
+  const target=getTargets('new');
   const tone=document.getElementById('new-tone').value;
   const length=document.getElementById('new-length').value;
   const memo=document.getElementById('new-memo').value;
-
   setLoading('new',true);
-
-  const system=`あなたはnoteで多くのスキを獲得する中小企業専門のプロWebライターです。読者の心に刺さる共感性の高いnote記事を書きます。マークダウン記号（#や**など）は使わずテキストベースで書いてください。`;
+  const system=`あなたはnoteで多くのスキを獲得する中小企業専門のプロWebライターです。
+見出しは # を大見出し、## を中見出しとして使い、本文はテキストで書いてください。
+**などの装飾記号は使わないこと。`;
   const user=`以下の条件でnote記事を書いてください。
 テーマ：${theme}
 ターゲット：${target}
@@ -392,20 +414,18 @@ async function generateNew(){
 構成・長さ：${length}
 補足：${memo||'なし'}
 条件：
-・最初の3行で読者の心をつかむ書き出しにすること
+・最初の3行で読者の心をつかむ書き出しにすること（見出しなしで書き始める）
 ・具体的な事例や数字を入れること
 ・専門用語は使わずわかりやすい言葉で書くこと
 ・読者が「自分のことだ」と感じる表現を意識すること
 ・最後に行動を促すCTAで締めること`;
-
   try{
     const result=await callClaude(system,user);
     document.getElementById('output-new-text').textContent=result;
     document.getElementById('output-new').classList.add('show');
-    const summary=result.slice(0,200);
     await Promise.all([
       generateThumbPrompts(theme,target,'thumb-new-cards'),
-      generateSNSPosts(summary,target,'new')
+      generateSNSPosts(result.slice(0,200),target,'new')
     ]);
   }catch(e){
     document.getElementById('output-new-text').textContent='エラーが発生しました。しばらくしてから再試行してください。';
@@ -419,27 +439,24 @@ async function generateRewrite(){
   if(!text){alert('リライトしたい文章を貼り付けてください');return;}
   const types=getSelectedTypes();
   if(types.length===0){alert('改善タイプを1つ以上選択してください');return;}
-  const target=document.getElementById('rewrite-target').value;
-
+  const target=getTargets('rewrite');
   setLoading('rewrite',true);
-
-  const system=`あなたはnoteで多くのスキを獲得する中小企業専門のプロWebライターです。マークダウン記号（#や**など）は使わずテキストベースで書いてください。`;
+  const system=`あなたはnoteで多くのスキを獲得する中小企業専門のプロWebライターです。
+見出しは # を大見出し、## を中見出しとして使い、本文はテキストで書いてください。
+**などの装飾記号は使わないこと。`;
   const user=`以下の文章を改善してください。
 改善タイプ：${types.join('、')}
 ターゲット読者：${target}
 元の文章：
 ${text}
 元の文章の意図を維持しながら指定された改善を施してください。`;
-
   try{
     const result=await callClaude(system,user);
     document.getElementById('output-rewrite-text').textContent=result;
     document.getElementById('output-rewrite').classList.add('show');
-    const firstLine=text.split('\n')[0].slice(0,30);
-    const summary=result.slice(0,200);
     await Promise.all([
-      generateThumbPrompts(firstLine,target,'thumb-rewrite-cards'),
-      generateSNSPosts(summary,target,'rewrite')
+      generateThumbPrompts(text.split('\n')[0].slice(0,30),target,'thumb-rewrite-cards'),
+      generateSNSPosts(result.slice(0,200),target,'rewrite')
     ]);
   }catch(e){
     document.getElementById('output-rewrite-text').textContent='エラーが発生しました。しばらくしてから再試行してください。';
@@ -457,10 +474,8 @@ function setLoading(mode,on){
     document.getElementById('thumb-'+mode).classList.remove('show');
   }
 }
-
 function copyText(id){
-  const el=document.getElementById(id);
-  if(!el)return;
+  const el=document.getElementById(id);if(!el)return;
   navigator.clipboard.writeText(el.textContent).then(()=>{
     const btns=el.parentElement.querySelectorAll('.copy-btn,.copy-all-btn');
     btns.forEach(btn=>{const o=btn.textContent;btn.textContent='✅ コピーしました';setTimeout(()=>btn.textContent=o,2000);});
