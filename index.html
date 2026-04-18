@@ -6,42 +6,49 @@
 <title>note磨きくん</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-  *{box-sizing:border-box;margin:0;padding:0}
-  :root{
-    --navy:#223670;--gold:#D0A900;--gold-light:#FFF8D6;
-    --bg:#F7F8FA;--white:#fff;--border:#E0E4EE;
-    --text:#1a2340;--muted:#6b7a99;--radius:12px;
-  }
-  body{font-family:'Noto Sans JP',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
-  .header{background:var(--navy);padding:20px 24px;text-align:center}
-  .header h1{font-family:'Noto Serif JP',serif;font-size:22px;color:#fff;letter-spacing:0.05em}
-  .header p{font-size:12px;color:#a8b4d0;margin-top:4px}
-  .tabs{display:flex;background:var(--white);border-bottom:1px solid var(--border)}
-  .tab{flex:1;padding:12px 6px;text-align:center;font-size:13px;font-weight:500;cursor:pointer;border-bottom:3px solid transparent;color:var(--muted);transition:all .2s}
-  .tab.active{color:var(--navy);border-bottom-color:var(--gold);background:var(--gold-light)}
-  .panel{display:none;padding:20px}
-  .panel.active{display:block}
-  .card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:20px;margin-bottom:16px}
-  .card-title{font-size:13px;font-weight:700;color:var(--navy);margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid var(--gold-light)}
-  label{display:block;font-size:12px;font-weight:500;color:var(--muted);margin-bottom:6px;margin-top:14px}
-  label:first-of-type{margin-top:0}
-  input[type=text],select,textarea{width:100%;padding:10px 12px;border:1px solid var(--border);border-radius:8px;font-family:'Noto Sans JP',sans-serif;font-size:14px;color:var(--text);background:var(--bg);outline:none;transition:border .2s}
-  input[type=text]:focus,select:focus,textarea:focus{border-color:var(--navy);background:var(--white)}
-  textarea{resize:vertical;line-height:1.7}
-  .btn{display:block;width:100%;padding:14px;background:var(--navy);color:#fff;border:none;border-radius:10px;font-size:15px;font-weight:700;font-family:'Noto Sans JP',sans-serif;cursor:pointer;transition:all .2s;margin-top:16px}
-  .btn:hover{background:#1a2a58;transform:translateY(-1px)}
-  .btn:active{transform:translateY(0)}
-  .btn:disabled{background:#aab;cursor:not-allowed;transform:none}
-  .btn-sub{display:block;width:100%;padding:10px;background:transparent;border:1.5px solid var(--navy);border-radius:8px;font-size:13px;font-weight:700;color:var(--navy);cursor:pointer;margin-top:10px;font-family:'Noto Sans JP',sans-serif;transition:all .2s}
-  .btn-sub:hover{background:var(--navy);color:#fff}
-  .btn-sub:disabled{border-color:#aab;color:#aab;cursor:not-allowed}
-  .btn-gold{display:block;width:100%;padding:10px;background:var(--gold);border:none;border-radius:8px;font-size:13px;font-weight:700;color:#3a2e00;cursor:pointer;margin-top:10px;font-family:'Noto Sans JP',sans-serif;transition:all .2s}
-  .btn-gold:hover{background:#b8930a}
-  .btn-gold:disabled{background:#ddd;color:#999;cursor:not-allowed}
-  .btn-cta{display:block;width:100%;padding:10px;background:#1a6640;border:none;border-radius:8px;font-size:13px;font-weight:700;color:#fff;cursor:pointer;margin-top:10px;font-family:'Noto Sans JP',sans-serif;transition:all .2s}
-  .btn-cta:hover{background:#144d30}
-  .btn-cta:disabled{background:#aab;cursor:not-allowed}
-.target-wrap{border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-top:0}
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#223670;--gold:#D0A900;--gold-light:#FFF8D6;
+  --bg:#F7F8FA;--white:#fff;--border:#E0E4EE;
+  --text:#1a2340;--muted:#6b7a99;--radius:12px;
+  --green:#1a6640;--green-bg:#f0faf4;--green-border:#a5d6a7;
+}
+body{font-family:'Noto Sans JP',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+.header{background:var(--navy);padding:18px 20px;text-align:center}
+.header h1{font-family:'Noto Serif JP',serif;font-size:20px;color:#fff;letter-spacing:0.05em}
+.header p{font-size:11px;color:#a8b4d0;margin-top:4px}
+.tabs{display:flex;background:var(--white);border-bottom:1px solid var(--border)}
+.tab{flex:1;padding:12px 4px;text-align:center;font-size:12px;font-weight:500;cursor:pointer;border-bottom:3px solid transparent;color:var(--muted);transition:all .2s}
+.tab.active{color:var(--navy);border-bottom-color:var(--gold);background:var(--gold-light)}
+.panel{display:none;padding:16px}
+.panel.active{display:block}
+/* 設定カード */
+.settings-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);margin-bottom:14px;overflow:hidden}
+.settings-head{padding:12px 16px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;user-select:none}
+.settings-head-left{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:700;color:var(--navy)}
+.settings-saved{font-size:10px;padding:2px 8px;background:#e8f5e9;color:var(--green);border-radius:20px;font-weight:700}
+.settings-arrow{font-size:10px;color:var(--muted);transition:transform .2s}
+.settings-body{padding:0 16px 16px;display:none}
+.settings-body.open{display:block}
+.settings-grid{display:flex;flex-direction:column;gap:10px;margin-top:12px}
+.settings-row label{font-size:11px;font-weight:700;color:var(--muted);margin-bottom:4px;display:block}
+.settings-row input{width:100%;padding:9px 12px;border:1px solid var(--border);border-radius:8px;font-family:'Noto Sans JP',sans-serif;font-size:13px;color:var(--text);background:var(--bg);outline:none;transition:border .2s}
+.settings-row input:focus{border-color:var(--navy);background:var(--white)}
+.save-settings-btn{margin-top:10px;padding:8px;background:var(--navy);color:#fff;border:none;border-radius:8px;font-size:12px;font-weight:700;width:100%;cursor:pointer;font-family:'Noto Sans JP',sans-serif}
+.save-settings-btn
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#1a6640;color:#fff;padding:10px 20px;border-radius:30px;font-size:13px;font-weight:700;opacity:0;transition:opacity .3s;pointer-events:none;z-index:999}
+.toast.show{opacity:1}
+/* メインカード */
+.card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:18px;margin-bottom:14px}
+.card-title{font-size:13px;font-weight:700;color:var(--navy);margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid var(--gold-light);display:flex;align-items:center;gap:6px}
+.step-badge{background:var(--navy);color:#fff;font-size:10px;padding:2px 8px;border-radius:20px}
+label{display:block;font-size:11px;font-weight:700;color:var(--muted);margin-bottom:5px;margin-top:12px}
+label
+input[type=text],select,textarea{width:100%;padding:9px 12px;border:1px solid var(--border);border-radius:8px;font-family:'Noto Sans JP',sans-serif;font-size:14px;color:var(--text);background:var(--bg);outline:none;transition:border .2s}
+input[type=text]:focus,select:focus,textarea:focus{border-color:var(--navy);background:var(--white)}
+textarea{resize:vertical;line-height:1.7}
+/* ターゲット */
+.target-wrap{border:1px solid var(--border);border-radius:10px;overflow:hidden}
 .target-cat{border-bottom:1px solid var(--border)}
 .target-cat
 .target-cat-head{padding:8px 12px;background:var(--bg);font-size:11px;font-weight:700;color:var(--navy);cursor:pointer;display:flex;align-items:center;justify-content:space-between;user-select:none}
@@ -52,107 +59,136 @@
 .target-chip{padding:5px 10px;border:1.5px solid var(--border);border-radius:20px;font-size:11px;cursor:pointer;transition:all .2s;background:var(--white);color:var(--text);user-select:none}
 .target-chip.selected{border-color:var(--navy);background:var(--navy);color:#fff}
 .target-chip:hover:not(.selected){border-color:var(--navy);color:var(--navy)}
-.selected-preview{font-size:11px;color:var(--navy);margin-top:8px;padding:6px 10px;background:var(--gold-light);border-radius:6px;min-height:28px;line-height:1.6}
-.clear-btn{font-size:10px;color:var(--muted);text-decoration:underline;cursor:pointer;margin-left:8px}
-.theme-suggest-btn{display:block;width:100%;padding:9px;background:#f0f4ff;border:1.5px dashed var(--navy);border-radius:8px;font-size:12px;font-weight:700;color:var(--navy);cursor:pointer;margin-bottom:10px;font-family:'Noto Sans JP',sans-serif;transition:all .2s;text-align:center}
-.theme-suggest-btn
-.theme-boxes{display:none;gap:8px;flex-direction:column;margin-bottom:12px}
+.selected-preview{font-size:11px;color:var(--navy);margin-top:8px;padding:6px 10px;background:var(--gold-light);border-radius:6px;min-height:26px;line-height:1.6}
+.clear-btn{font-size:10px;color:var(--muted);text-decoration:underline;cursor:pointer;margin-left:6px}
+/* テーマサジェスト */
+.suggest-btn{width:100%;padding:9px;background:#f0f4ff;border:1.5px dashed var(--navy);border-radius:8px;font-size:12px;font-weight:700;color:var(--navy);cursor:pointer;font-family:'Noto Sans JP',sans-serif;transition:all .2s;text-align:center;margin-top:12px}
+.suggest-btn
+.theme-boxes{display:none;flex-direction:column;gap:6px;margin-top:8px}
 .theme-boxes.show{display:flex}
-.theme-box{padding:10px 12px;background:var(--white);border:1.5px solid var(--border);border-radius:8px;font-size:13px;cursor:pointer;transition:all .2s;line-height:1.5}
+.theme-box{padding:9px 12px;background:var(--white);border:1.5px solid var(--border);border-radius:8px;font-size:13px;cursor:pointer;transition:all .2s;line-height:1.5}
 .theme-box:hover{border-color:var(--navy);background:#f0f4ff}
-.theme-box-label{font-size:10px;color:var(--gold);font-weight:700;display:block;margin-bottom:3px}
-.rewrite-types{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.rtype{padding:10px 8px;border:1.5px solid var(--border);border-radius:8px;text-align:center;font-size:12px;cursor:pointer;transition:all .2s;line-height:1.4}
-.rtype.selected{border-color:var(--navy);background:var(--navy);color:#fff}
-.output-box{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:20px;margin-top:16px;display:none}
-.output-box.show{display:block}
-.output-label{font-size:11px;font-weight:700;color:var(--gold);letter-spacing:0.1em;margin-bottom:10px}
-.output-text{font-size:14px;line-height:1.9;color:var(--text);white-space:pre-wrap;word-break:break-word}
-.sub-result{background:var(--bg);border-radius:8px;padding:12px;margin-top:10px;font-size:13px;line-height:1.8;color:var(--text);display:none;white-space:pre-wrap;word-break:break-word}
-.sub-result.show{display:block}
-.title-item{padding:10px 12px;background:var(--white);border:1.5px solid var(--border);border-radius:8px;margin-bottom:8px;font-size:14px;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:space-between;gap:8px}
-.title-item:hover{border-color:var(--navy)}
-.title-item-text{flex:1;line-height:1.5}
-.title-copy{font-size:10px;padding:3px 8px;background:var(--navy);color:#fff;border:none;border-radius:4px;cursor:pointer;font-family:'Noto Sans JP',sans-serif;white-space:nowrap}
-.cta-section{margin-top:16px;padding-top:16px;border-top:2px dashed #c8e6c9}
-.cta-section-title{font-size:13px;font-weight:700;color:#1a6640;margin-bottom:12px;display:flex;align-items:center;gap:6px}
-.cta-inputs{display:flex;flex-direction:column;gap:8px;margin-bottom:12px}
-.cta-input-row{display:flex;flex-direction:column;gap:4px}
-.cta-input-label{font-size:11px;font-weight:700;color:var(--muted)}
-.cta-result-wrap{display:none;margin-top:12px}
-.cta-result-wrap.show{display:block}
-.cta-block{background:#f0faf4;border:1px solid #a5d6a7;border-radius:10px;padding:14px;margin-bottom:12px}
-.cta-block-label{font-size:11px;font-weight:700;color:#1a6640;letter-spacing:0.08em;margin-bottom:8px;display:flex;align-items:center;justify-content:space-between}
+.theme-box-label{font-size:10px;color:var(--gold);font-weight:700;display:block;margin-bottom:2px}
+.theme-box-reason{font-size:11px;color:var(--muted);margin-top:3px}
+/* 生成ボタン */
+.generate-btn{display:block;width:100%;padding:16px;background:var(--navy);color:#fff;border:none;border-radius:12px;font-size:16px;font-weight:700;font-family:'Noto Sans JP',sans-serif;cursor:pointer;transition:all .2s;margin-top:16px;letter-spacing:0.05em}
+.generate-btn
+.generate-btn:active{transform:translateY(0)}
+.generate-btn
+/* 進捗表示 */
+.progress-wrap{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:18px;margin-top:14px;display:none}
+.progress-wrap.show{display:block}
+.progress-title{font-size:13px;font-weight:700;color:var(--navy);margin-bottom:14px}
+.progress-steps{display:flex;flex-direction:column;gap:8px}
+.progress-step{display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:8px;font-size:13px;background:var(--bg);border:1px solid var(--border)}
+.progress-step.done{background:#e8f5e9;border-color:#a5d6a7;color:var(--green)}
+.progress-step.active{background:#e8eeff;border-color:var(--navy);color:var(--navy)}
+.progress-step.wait{color:var(--muted)}
+.step-icon{font-size:16px;width:20px;text-align:center}
+/* 出力セクション */
+.output-sections{margin-top:14px;display:none}
+.output-sections.show{display:block}
+.out-section{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);margin-bottom:14px;overflow:hidden}
+.out-head{padding:12px 16px;font-size:13px;font-weight:700;color:var(--navy);border-bottom:1px solid var(--border);background:var(--bg);display:flex;align-items:center;gap:8px}
+.out-body{padding:16px}
+.out-text{font-size:14px;line-height:1.9;color:var(--text);white-space:pre-wrap;word-break:break-word}
+.title-item{padding:10px 12px;background:var(--bg);border:1.5px solid var(--border);border-radius:8px;margin-bottom:8px;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.title-item
+.title-text{flex:1;font-size:13px;line-height:1.5}
+.title-no{font-size:10px;font-weight:700;color:var(--gold);margin-right:4px}
+.lead-block{padding:12px;background:var(--bg);border-radius:8px;margin-bottom:10px;font-size:13px;line-height:1.8}
+.lead-block
+.lead-type{font-size:10px;font-weight:700;color:var(--navy);margin-bottom:4px}
+.cta-block{background:var(--green-bg);border:1px solid var(--green-border);border-radius:10px;padding:14px;margin-bottom:10px}
+.cta-block
+.cta-block-label{font-size:11px;font-weight:700;color:var(--green);margin-bottom:8px;display:flex;align-items:center;justify-content:space-between}
 .cta-block-label span{font-size:10px;color:var(--muted);font-weight:400}
 .cta-text{font-size:13px;line-height:1.9;color:var(--text);white-space:pre-wrap;word-break:break-word}
-.cta-hint{font-size:11px;color:#1a6640;background:#e8f5e9;padding:6px 10px;border-radius:6px;margin-bottom:10px;line-height:1.6}
-.section{margin-top:20px;display:none}
-.section.show{display:block}
-.section-header{font-size:14px;font-weight:700;color:var(--navy);margin-bottom:14px;display:flex;align-items:center;gap:8px;padding:12px 16px;background:var(--gold-light);border-radius:10px;border-left:4px solid var(--gold)}
-.sns-tabs{display:flex;gap:8px;margin-bottom:14px}
-.sns-tab{flex:1;padding:10px;text-align:center;font-size:13px;font-weight:700;border-radius:8px;cursor:pointer;border:1.5px solid var(--border);color:var(--muted);transition:all .2s}
-.sns-tab.active-x{border-color:#000;background:#000;color:#fff}
-.sns-tab.active-threads{border-color:#1a1a1a;background:#1a1a1a;color:#fff}
-.sns-panel{display:none}
-.sns-panel.active{display:block}
-.post-card{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:16px;margin-bottom:12px}
-.post-type{font-size:11px;font-weight:700;letter-spacing:0.08em;margin-bottom:8px;display:flex;align-items:center;justify-content:space-between}
-.post-type-x{color:#000}
-.post-type-threads{color:#1a1a1a}
-.post-text{font-size:13px;line-height:1.8;color:var(--text);white-space:pre-wrap;word-break:break-word;background:var(--bg);padding:12px;border-radius:8px;min-height:60px}
-.char-badge{font-size:11px;font-weight:700;padding:2px 8px;border-radius:20px;background:#f0f0f0;color:#555}
+.thumb-card{background:var(--gold-light);border:1px solid var(--gold);border-radius:10px;padding:14px;margin-bottom:10px}
+.thumb-card
+.thumb-type{font-size:11px;font-weight:700;color:#8a6500;margin-bottom:6px}
+.thumb-prompt{font-size:12px;line-height:1.7;color:#3a3000;font-family:monospace;word-break:break-all}
+.sns-tabs{display:flex;gap:8px;margin-bottom:12px}
+.sns-tab{flex:1;padding:9px;text-align:center;font-size:12px;font-weight:700;border-radius:8px;cursor:pointer;border:1.5px solid var(--border);color:var(--muted);transition:all .2s}
+.sns-tab.ax{border-color:#000;background:#000;color:#fff}
+.sns-tab.ath{border-color:#1a1a1a;background:#1a1a1a;color:#fff}
+.sns-pane{display:none}
+.sns-pane.active{display:block}
+.post-card{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:14px;margin-bottom:10px}
+.post-card
+.post-meta{font-size:11px;font-weight:700;margin-bottom:8px;display:flex;align-items:center;justify-content:space-between}
+.post-body{font-size:13px;line-height:1.8;color:var(--text);white-space:pre-wrap;word-break:break-word}
+.char-badge{font-size:11px;padding:2px 8px;border-radius:20px;background:#f0f0f0;color:#555;font-weight:700}
 .char-badge.over{background:#ffe0e0;color:#c00}
+/* リライト */
+.rewrite-types{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:0}
+.rtype{padding:9px 6px;border:1.5px solid var(--border);border-radius:8px;text-align:center;font-size:11px;cursor:pointer;transition:all .2s;line-height:1.4}
+.rtype.selected{border-color:var(--navy);background:var(--navy);color:#fff}
+/* ハッシュタグ */
+.hash-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:4px}
+.hash-card{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:12px}
+.hash-card-title{font-size:11px;font-weight:700;margin-bottom:8px;padding-bottom:6px;border-bottom:1px solid var(--border)}
+.hash-tag{display:inline-block;margin:2px 2px;padding:2px 7px;background:#fff;border:1px solid var(--border);border-radius:4px;color:var(--navy);font-size:11px}
 .copy-btn{margin-top:10px;padding:6px 14px;background:var(--navy);color:#fff;border:none;border-radius:6px;font-size:12px;cursor:pointer;font-family:'Noto Sans JP',sans-serif;font-weight:500}
 .copy-btn
-.copy-all-btn{display:block;width:100%;padding:10px;background:transparent;border:1.5px solid var(--navy);border-radius:8px;font-size:13px;font-weight:700;color:var(--navy);cursor:pointer;margin-top:12px;font-family:'Noto Sans JP',sans-serif}
+.copy-all-btn{display:block;width:100%;padding:9px;background:transparent;border:1.5px solid var(--navy);border-radius:8px;font-size:12px;font-weight:700;color:var(--navy);cursor:pointer;margin-top:10px;font-family:'Noto Sans JP',sans-serif}
 .copy-all-btn:hover{background:var(--navy);color:#fff}
-.thumb-section{margin-top:16px;display:none}
-.thumb-section.show{display:block}
-.thumb-header{font-size:13px;font-weight:700;color:var(--navy);margin-bottom:12px;display:flex;align-items:center;gap:6px;padding:10px 14px;background:#f0f4ff;border-radius:8px}
-.thumb-card{background:var(--gold-light);border:1px solid var(--gold);border-radius:10px;padding:14px;margin-bottom:10px}
-.thumb-type{font-size:11px;font-weight:700;color:#8a6500;letter-spacing:0.08em;margin-bottom:6px}
-.thumb-prompt{font-size:12px;line-height:1.7;color:#3a3000;font-family:monospace;word-break:break-all}
-.hash-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
-.hash-card{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:14px}
-.hash-card-title{font-size:11px;font-weight:700;color:var(--navy);margin-bottom:8px;padding-bottom:6px;border-bottom:1px solid var(--border)}
-.hash-tag{display:inline-block;margin:2px 3px;padding:2px 8px;background:#f0f4ff;border-radius:4px;color:var(--navy);font-size:11px}
-.loading{text-align:center;padding:20px;color:var(--muted);font-size:14px;display:none}
-.loading.show{display:block}
-.loading-inline{color:var(--muted);font-size:12px;padding:8px 0;display:none;text-align:center}
-.loading-inline.show{display:block}
 .dot{display:inline-block;animation:blink 1.2s infinite}
 .dot:nth-child(2){animation-delay:.4s}
 .dot:nth-child(3){animation-delay:.8s}
 @keyframes blink{0%,80%,100%{opacity:0}40%{opacity:1}}
-.badge{display:inline-block;padding:2px 8px;background:var(--navy);color:#fff;border-radius:20px;font-size:10px;font-weight:700;margin-left:4px}
+.note-hint{font-size:11px;color:var(--muted);margin-top:8px;line-height:1.6;padding:7px 10px;background:var(--bg);border-radius:6px}
 .char-count{font-size:11px;color:var(--muted);text-align:right;margin-top:4px}
-.note-hint{font-size:11px;color:var(--muted);margin-top:8px;line-height:1.6;padding:8px;background:var(--bg);border-radius:6px}
-.flow-bar{display:flex;align-items:center;justify-content:center;gap:6px;padding:12px;background:#f0f4ff;border-radius:10px;margin:12px;font-size:11px;color:var(--navy);font-weight:500;flex-wrap:wrap}
-.flow-step{padding:4px 8px;background:var(--navy);color:#fff;border-radius:20px;font-size:10px}
-.flow-arrow{color:var(--gold);font-size:14px}
-.divider{border:none;border-top:1px solid var(--border);margin:16px 0}
+.badge{display:inline-block;padding:2px 7px;background:var(--navy);color:#fff;border-radius:20px;font-size:10px;font-weight:700;margin-left:4px}
+.divider{border:none;border-top:1px solid var(--border);margin:14px 0}
+.hash-gen-btn{display:block;width:100%;padding:13px;background:var(--navy);color:#fff;border:none;border-radius:10px;font-size:14px;font-weight:700;font-family:'Noto Sans JP',sans-serif;cursor:pointer;transition:all .2s;margin-top:14px}
+.hash-gen-btn
+.hash-gen-btn
 </style>
 </head>
 <body>
 <div class="header">
   <h1>✏️ note磨きくん</h1>
-  <p>記事作成からSNS集客まで、ワンストップで完結</p>
+  <p>テーマを決めるだけで、記事からSNS集客まで全部出てくる</p>
 </div>
-<div class="flow-bar">
-  <span class="flow-step">①テーマ提案</span><span class="flow-arrow">→</span>
-  <span class="flow-step">②note記事</span><span class="flow-arrow">→</span>
-  <span class="flow-step">③タイトル・リード</span><span class="flow-arrow">→</span>
-  <span class="flow-step">④CTA文</span><span class="flow-arrow">→</span>
-  <span class="flow-step">⑤SNS集客</span>
+<!-- アプリ設定 -->
+<div style="padding:12px 16px 0">
+  <div class="settings-card">
+    <div class="settings-head" onclick="toggleSettings()">
+      <div class="settings-head-left">
+        ⚙️ アプリ設定
+        <span class="settings-saved" id="settings-saved" style="display:none">保存済み ✓</span>
+      </div>
+      <span class="settings-arrow" id="settings-arrow">▼</span>
+    </div>
+    <div class="settings-body" id="settings-body">
+      <div class="settings-grid">
+        <div class="settings-row">
+          <label>アプリ名</label>
+          <input type="text" id="app-name" placeholder="例：note磨きくん">
+        </div>
+        <div class="settings-row">
+          <label>アプリURL（無料版・紹介ページ）</label>
+          <input type="text" id="app-url" placeholder="例：https://spc-jp.github.io/note-migaki/">
+        </div>
+        <div class="settings-row">
+          <label>Stripe申込URL（有料版）</label>
+          <input type="text" id="stripe-url" placeholder="例：https://buy.stripe.com/xxxxx">
+        </div>
+      </div>
+      <button class="save-settings-btn" onclick="saveSettings()">💾 設定を保存する</button>
+    </div>
+  </div>
 </div>
 <div class="tabs">
   <div class="tab active" onclick="switchTab('new')">📝 新規作成</div>
   <div class="tab" onclick="switchTab('rewrite')">✨ リライト</div>
   <div class="tab" onclick="switchTab('hashtag')">🏷️ ハッシュタグ</div>
 </div>
+<!-- ターゲット テンプレート -->
 <template id="target-tmpl">
   <div>
-    <div style="font-size:12px;font-weight:500;color:var(--muted);margin-bottom:6px;margin-top:14px">ターゲット読者（複数選択可）</div>
+    <div style="font-size:11px;font-weight:700;color:var(--muted);margin-bottom:6px;margin-top:12px">ターゲット読者（複数選択可）</div>
     <div class="target-wrap">
       <div class="target-cat">
         <div class="target-cat-head" onclick="toggleCat(this)">💼 ビジネス系 <span class="target-cat-arrow">▼</span></div>
@@ -206,51 +242,16 @@
     <div class="selected-preview">選択中：なし <span class="clear-btn" onclick="clearChips(this)">クリア</span></div>
   </div>
 </template>
-<!-- CTA入力テンプレート -->
-<template id="cta-tmpl">
-  <div class="cta-section">
-    <div class="cta-section-title">🛒 アプリ紹介CTA文を生成する</div>
-    <div class="cta-hint">アプリ名・URL・StripeURLを入力して生成すると、記事の中間と末尾に使えるCTA文が2種類出力されます。</div>
-    <div class="cta-inputs">
-      <div class="cta-input-row">
-        <div class="cta-input-label">アプリ名</div>
-        <input type="text" class="cta-app-name" placeholder="例：note磨きくん">
-      </div>
-      <div class="cta-input-row">
-        <div class="cta-input-label">アプリURL（無料版・紹介ページ）</div>
-        <input type="text" class="cta-app-url" placeholder="例：https://spc-jp.github.io/note-migaki/">
-      </div>
-      <div class="cta-input-row">
-        <div class="cta-input-label">StripeURL（有料版購入リンク）</div>
-        <input type="text" class="cta-stripe-url" placeholder="例：https://buy.stripe.com/xxxxx">
-      </div>
-    </div>
-    <button class="btn-cta cta-generate-btn">🛒 中間CTA文・末尾CTA文を生成する</button>
-    <div class="loading-inline cta-loading"><span>CTA文を生成中</span><span class="dot">．</span><span class="dot">．</span><span class="dot">．</span></div>
-    <div class="cta-result-wrap">
-      <div class="cta-block">
-        <div class="cta-block-label">📍 中間CTA文 <span>記事の真ん中あたりに挿入</span></div>
-        <div class="cta-text cta-mid-text"></div>
-        <button class="copy-btn cta-mid-copy">コピー</button>
-      </div>
-      <div class="cta-block">
-        <div class="cta-block-label">🎯 末尾CTA文 <span>記事の最後に挿入</span></div>
-        <div class="cta-text cta-end-text"></div>
-        <button class="copy-btn cta-end-copy">コピー</button>
-      </div>
-    </div>
-  </div>
-</template>
-<!-- 新規作成タブ -->
+<!-- 新規作成 -->
 <div id="panel-new" class="panel active">
   <div class="card">
-    <div class="card-title">📌 note記事の基本設定</div>
+    <div class="card-title"><span class="step-badge">STEP 1</span> ターゲットを選ぶ</div>
     <div id="target-new-wrap"></div>
-    <div style="margin-top:14px">
-      <button class="theme-suggest-btn" id="suggest-btn" onclick="suggestThemes()">💡 ターゲットからnoteテーマを3つ提案してもらう</button>
-      <div class="loading-inline" id="loading-suggest"><span>テーマを考え中</span><span class="dot">．</span><span class="dot">．</span><span class="dot">．</span></div>
-      <div class="theme-boxes" id="theme-boxes"></div>
-    </div>
+    <button class="suggest-btn" id="suggest-btn" onclick="suggestThemes()">💡 ターゲットからnoteテーマを3つ提案してもらう</button>
+    <div class="theme-boxes" id="theme-boxes"></div>
+  </div>
+  <div class="card">
+    <div class="card-title"><span class="step-badge">STEP 2</span> 記事の内容を決める</div>
     <label>記事テーマ・タイトル案</label>
     <input type="text" id="new-theme" placeholder="例：中小企業がSNS集客を始めるべき理由">
     <label>文体・トーン</label>
@@ -266,126 +267,193 @@
       <option value="1200文字程度・3見出し構成（短め）">1200文字・3見出し（短め）</option>
       <option value="3000文字以上・7見出し以上の詳細構成">3000文字以上・詳細版</option>
     </select>
-    <label>補足情報（実体験・強調したいこと）</label>
-    <textarea id="new-memo" rows="3" placeholder="例：AI活用の事例を入れてほしい、具体的な数字を使ってほしいなど"></textarea>
-    <button class="btn" id="btn-new" onclick="generateNew()">📝 記事を生成してSNS投稿文も作る</button>
-    <div class="note-hint">※ 見出しは # と ## で出力されます。noteに貼り付け後、目次設定をしてください。</div>
+    <label>補足（任意）</label>
+    <textarea id="new-memo" rows="2" placeholder="例：AI活用の事例を入れてほしい、具体的な数字を使ってほしいなど"></textarea>
+<button class="generate-btn" id="btn-new" onclick="generateAll('new')">
+  📝 記事を生成する（全自動）
+</button>
+<div class="note-hint">※ 見出しは # と ## で出力。noteに貼り付け後、目次設定をしてください。</div>
   </div>
-  <div class="loading" id="loading-new"><span>記事を生成中</span><span class="dot">．</span><span class="dot">．</span><span class="dot">．</span></div>
-  <div class="output-box" id="output-new">
-    <div class="output-label">生成された記事（# 大見出し　## 中見出し）</div>
-    <div class="output-text" id="output-new-text"></div>
-    <button class="copy-all-btn" onclick="copyText('output-new-text')">📋 記事をコピー</button>
-    <hr class="divider">
-    <button class="btn-sub" id="btn-title-new" onclick="generateTitles('new')">📌 タイトル案を3本生成する</button>
-    <div class="loading-inline" id="loading-title-new"><span>タイトル考え中</span><span class="dot">．</span><span class="dot">．</span><span class="dot">．</span></div>
-    <div class="sub-result" id="title-result-new"></div>
-    <button class="btn-gold" id="btn-lead-new" onclick="generateLead('new')">✍️ リード文（書き出し）を3パターン生成する</button>
-    <div class="loading-inline" id="loading-lead-new"><span>リード文を生成中</span><span class="dot">．</span><span class="dot">．</span><span class="dot">．</span></div>
-    <div class="sub-result" id="lead-result-new"></div>
-    <div id="cta-new-wrap"></div>
+  <!-- 進捗 -->
+  <div class="progress-wrap" id="progress-new">
+    <div class="progress-title">⏳ 生成中です、しばらくお待ちください</div>
+    <div class="progress-steps" id="progress-steps-new"></div>
   </div>
-  <div class="thumb-section" id="thumb-new">
-    <div class="thumb-header">🎨 MidJourney V8 サムネプロンプト <span class="badge">3種</span></div>
-    <div id="thumb-new-cards"></div>
-  </div>
-  <div class="section" id="sns-new">
-    <div class="section-header">📣 SNS集客投稿文 <span class="badge">X + Threads</span></div>
-    <div class="sns-tabs">
-      <div class="sns-tab active-x" id="tab-x-new" onclick="switchSns('new','x')">𝕏 X（Twitter）</div>
-      <div class="sns-tab" id="tab-threads-new" onclick="switchSns('new','threads')">🧵 Threads</div>
-    </div>
-    <div class="sns-panel active" id="sns-x-new"><div id="x-posts-new"></div></div>
-    <div class="sns-panel" id="sns-threads-new"><div id="threads-posts-new"></div></div>
+  <!-- 全出力 -->
+  <div class="output-sections" id="outputs-new">
+<div class="out-section" id="sec-article-new">
+  <div class="out-head">📄 note記事本文</div>
+  <div class="out-body">
+    <div class="out-text" id="out-article-new"></div>
+    <button class="copy-all-btn" onclick="copyEl('out-article-new')">📋 記事をコピー</button>
   </div>
 </div>
-<!-- リライトタブ -->
+
+<div class="out-section" id="sec-titles-new">
+  <div class="out-head">📌 タイトル案 <span class="badge">3本</span></div>
+  <div class="out-body" id="out-titles-new"></div>
+</div>
+
+<div class="out-section" id="sec-lead-new">
+  <div class="out-head">✍️ リード文 <span class="badge">3パターン</span></div>
+  <div class="out-body" id="out-lead-new"></div>
+</div>
+
+<div class="out-section" id="sec-cta-new">
+  <div class="out-head">🛒 CTA文（中間・末尾）</div>
+  <div class="out-body" id="out-cta-new"></div>
+</div>
+
+<div class="out-section" id="sec-thumb-new">
+  <div class="out-head">🎨 MidJourney V8 サムネプロンプト <span class="badge">3種</span></div>
+  <div class="out-body" id="out-thumb-new"></div>
+</div>
+
+<div class="out-section" id="sec-sns-new">
+  <div class="out-head">📣 SNS集客投稿文</div>
+  <div class="out-body">
+    <div class="sns-tabs">
+      <div class="sns-tab ax" onclick="switchSns('new','x')">𝕏 X（Twitter）</div>
+      <div class="sns-tab" id="tab-th-new" onclick="switchSns('new','threads')">🧵 Threads</div>
+    </div>
+    <div class="sns-pane active" id="pane-x-new"><div id="out-x-new"></div></div>
+    <div class="sns-pane" id="pane-th-new"><div id="out-th-new"></div></div>
+  </div>
+</div>
+  </div>
+</div>
+<!-- リライト -->
 <div id="panel-rewrite" class="panel">
   <div class="card">
-    <div class="card-title">📄 リライトしたい文章を貼り付け</div>
+    <div class="card-title"><span class="step-badge">STEP 1</span> リライトしたい文章を貼り付け</div>
     <textarea id="rewrite-input" rows="8" placeholder="ここに既存のnote記事または文章を貼り付けてください..."></textarea>
     <div class="char-count" id="char-count">0文字</div>
   </div>
   <div class="card">
-    <div class="card-title">🔧 改善タイプを選択（複数可）</div>
+    <div class="card-title"><span class="step-badge">STEP 2</span> 改善タイプとターゲットを選ぶ</div>
+    <div style="font-size:11px;font-weight:700;color:var(--muted);margin-bottom:8px">改善タイプ（複数選択可）</div>
     <div class="rewrite-types">
       <div class="rtype" onclick="toggleType(this)" data-type="書き出しを感情フックで強化する">📌 書き出し強化</div>
-      <div class="rtype" onclick="toggleType(this)" data-type="読者が『自分のことだ』と感じる表現に変える">💡 共感フック追加</div>
-      <div class="rtype" onclick="toggleType(this)" data-type="スマホで読みやすい短い段落に変換する">📱 スマホ読みやすく</div>
+      <div class="rtype" onclick="toggleType(this)" data-type="読者が自分のことだと感じる表現に変える">💡 共感フック追加</div>
+      <div class="rtype" onclick="toggleType(this)" data-type="スマホで読みやすい短い段落に変換する">📱 スマホ最適化</div>
       <div class="rtype" onclick="toggleType(this)" data-type="専門用語を平易な言葉に置き換える">🔤 専門用語を平易に</div>
       <div class="rtype" onclick="toggleType(this)" data-type="SEOを意識したキーワードを自然に盛り込む">🔍 SEO強化</div>
-      <div class="rtype" onclick="toggleType(this)" data-type="全体をプロのWebライター視点でフルリライトする">✨ 全体フルリライト</div>
+      <div class="rtype" onclick="toggleType(this)" data-type="全体をプロのWebライター視点でフルリライトする">✨ フルリライト</div>
     </div>
     <div id="target-rewrite-wrap"></div>
-    <button class="btn" id="btn-rewrite" onclick="generateRewrite()">✨ リライトしてSNS投稿文も作る</button>
-    <div class="note-hint">改善タイプは複数選択できます。全体フルリライトを選ぶと他の指定は無視されます。見出しは # と ## で出力されます。</div>
+    <label>文体・トーン</label>
+    <select id="rewrite-tone">
+      <option value="共感ベースで背中を押す温かいトーン">共感・背中を押す（温かい）</option>
+      <option value="具体的な事例中心の実践的なトーン">事例中心・実践的</option>
+      <option value="問題提起から解決策を提示する論理的なトーン">問題提起・論理的</option>
+      <option value="会話調で親しみやすいトーン">会話調・親しみやすい</option>
+    </select>
+    <button class="generate-btn" id="btn-rewrite" onclick="generateAll('rewrite')">✨ リライトして全部生成する</button>
+    <div class="note-hint">改善タイプは複数選択可。フルリライトを選ぶと他の指定は無視されます。</div>
   </div>
-  <div class="loading" id="loading-rewrite"><span>リライト中</span><span class="dot">．</span><span class="dot">．</span><span class="dot">．</span></div>
-  <div class="output-box" id="output-rewrite">
-    <div class="output-label">リライト後の文章（# 大見出し　## 中見出し）</div>
-    <div class="output-text" id="output-rewrite-text"></div>
-    <button class="copy-all-btn" onclick="copyText('output-rewrite-text')">📋 リライト文をコピー</button>
-    <hr class="divider">
-    <button class="btn-sub" id="btn-title-rewrite" onclick="generateTitles('rewrite')">📌 タイトル案を3本生成する</button>
-    <div class="loading-inline" id="loading-title-rewrite"><span>タイトル考え中</span><span class="dot">．</span><span class="dot">．</span><span class="dot">．</span></div>
-    <div class="sub-result" id="title-result-rewrite"></div>
-    <button class="btn-gold" id="btn-lead-rewrite" onclick="generateLead('rewrite')">✍️ リード文（書き出し）を3パターン生成する</button>
-    <div class="loading-inline" id="loading-lead-rewrite"><span>リード文を生成中</span><span class="dot">．</span><span class="dot">．</span><span class="dot">．</span></div>
-    <div class="sub-result" id="lead-result-rewrite"></div>
-    <div id="cta-rewrite-wrap"></div>
+  <div class="progress-wrap" id="progress-rewrite">
+    <div class="progress-title">⏳ 生成中です、しばらくお待ちください</div>
+    <div class="progress-steps" id="progress-steps-rewrite"></div>
   </div>
-  <div class="thumb-section" id="thumb-rewrite">
-    <div class="thumb-header">🎨 MidJourney V8 サムネプロンプト <span class="badge">3種</span></div>
-    <div id="thumb-rewrite-cards"></div>
-  </div>
-  <div class="section" id="sns-rewrite">
-    <div class="section-header">📣 SNS集客投稿文 <span class="badge">X + Threads</span></div>
-    <div class="sns-tabs">
-      <div class="sns-tab active-x" id="tab-x-rewrite" onclick="switchSns('rewrite','x')">𝕏 X（Twitter）</div>
-      <div class="sns-tab" id="tab-threads-rewrite" onclick="switchSns('rewrite','threads')">🧵 Threads</div>
+  <div class="output-sections" id="outputs-rewrite">
+    <div class="out-section"><div class="out-head">📄 リライト後の文章</div>
+      <div class="out-body"><div class="out-text" id="out-article-rewrite"></div>
+      <button class="copy-all-btn" onclick="copyEl('out-article-rewrite')">📋 リライト文をコピー</button></div>
     </div>
-    <div class="sns-panel active" id="sns-x-rewrite"><div id="x-posts-rewrite"></div></div>
-    <div class="sns-panel" id="sns-threads-rewrite"><div id="threads-posts-rewrite"></div></div>
+    <div class="out-section"><div class="out-head">📌 タイトル案 <span class="badge">3本</span></div><div class="out-body" id="out-titles-rewrite"></div></div>
+    <div class="out-section"><div class="out-head">✍️ リード文 <span class="badge">3パターン</span></div><div class="out-body" id="out-lead-rewrite"></div></div>
+    <div class="out-section"><div class="out-head">🛒 CTA文（中間・末尾）</div><div class="out-body" id="out-cta-rewrite"></div></div>
+    <div class="out-section"><div class="out-head">🎨 MidJourney V8 サムネプロンプト <span class="badge">3種</span></div><div class="out-body" id="out-thumb-rewrite"></div></div>
+    <div class="out-section"><div class="out-head">📣 SNS集客投稿文</div>
+      <div class="out-body">
+        <div class="sns-tabs">
+          <div class="sns-tab ax" onclick="switchSns('rewrite','x')">𝕏 X（Twitter）</div>
+          <div class="sns-tab" id="tab-th-rewrite" onclick="switchSns('rewrite','threads')">🧵 Threads</div>
+        </div>
+        <div class="sns-pane active" id="pane-x-rewrite"><div id="out-x-rewrite"></div></div>
+        <div class="sns-pane" id="pane-th-rewrite"><div id="out-th-rewrite"></div></div>
+      </div>
+    </div>
   </div>
 </div>
-<!-- ハッシュタグタブ -->
+<!-- ハッシュタグ -->
 <div id="panel-hashtag" class="panel">
   <div class="card">
     <div class="card-title">🏷️ ハッシュタグ一括生成</div>
     <label>記事テーマ・キーワード</label>
     <input type="text" id="hash-theme" placeholder="例：中小企業 SNS集客 AI活用">
     <div id="target-hashtag-wrap"></div>
-    <button class="btn" id="btn-hashtag" onclick="generateHashtags()">🏷️ ハッシュタグをまとめて生成する</button>
+    <button class="hash-gen-btn" id="btn-hashtag" onclick="generateHashtags()">🏷️ 4媒体分まとめて生成する</button>
   </div>
-  <div class="loading" id="loading-hashtag"><span>ハッシュタグを生成中</span><span class="dot">．</span><span class="dot">．</span><span class="dot">．</span></div>
-  <div class="output-box" id="output-hashtag">
-    <div class="output-label">生成されたハッシュタグ</div>
-    <div class="hash-grid" id="hash-grid"></div>
+  <div class="progress-wrap" id="progress-hashtag">
+    <div class="progress-title">⏳ ハッシュタグを生成中<span class="dot">．</span><span class="dot">．</span><span class="dot">．</span></div>
+  </div>
+  <div class="output-sections" id="outputs-hashtag">
+    <div class="out-section"><div class="out-head">🏷️ 生成されたハッシュタグ</div>
+      <div class="out-body"><div class="hash-grid" id="hash-grid"></div></div>
+    </div>
   </div>
 </div>
+<div class="toast" id="toast"></div>
 <script>
-const API_URL = 'https://note-migaki-api.yymmatsu.workers.dev';
+const API='https://note-migaki-api.yymmatsu.workers.dev';
 
-['new','rewrite','hashtag'].forEach(mode=>{
-  const wrap=document.getElementById('target-'+mode+'-wrap');
-  if(!wrap)return;
-  wrap.appendChild(document.getElementById('target-tmpl').content.cloneNode(true));
-});
+const STEPS=[
+  {id:'article',icon:'📄',label:'note記事を生成中'},
+  {id:'titles', icon:'📌',label:'タイトル案を生成中'},
+  {id:'lead',   icon:'✍️',label:'リード文を生成中'},
+  {id:'cta',    icon:'🛒',label:'CTA文を生成中'},
+  {id:'thumb',  icon:'🎨',label:'サムネプロンプトを生成中'},
+  {id:'sns',    icon:'📣',label:'SNS投稿文を生成中'},
+];
 
-['new','rewrite'].forEach(mode=>{
-  const wrap=document.getElementById('cta-'+mode+'-wrap');
-  if(!wrap)return;
-  wrap.appendChild(document.getElementById('cta-tmpl').content.cloneNode(true));
-  const btn=wrap.querySelector('.cta-generate-btn');
-  btn.addEventListener('click',()=>generateCTA(mode));
-});
-
-function toggleCat(head){
-  const body=head.nextElementSibling;
-  const arrow=head.querySelector('.target-cat-arrow');
+// 設定の保存・読み込み
+function loadSettings(){
+  const s=JSON.parse(localStorage.getItem('nmk-settings')||'{}');
+  if(s.appName) document.getElementById('app-name').value=s.appName;
+  if(s.appUrl)  document.getElementById('app-url').value=s.appUrl;
+  if(s.stripeUrl) document.getElementById('stripe-url').value=s.stripeUrl;
+  if(s.appName||s.appUrl){
+    document.getElementById('settings-saved').style.display='inline';
+  }
+}
+function saveSettings(){
+  const s={
+    appName:document.getElementById('app-name').value.trim(),
+    appUrl:document.getElementById('app-url').value.trim(),
+    stripeUrl:document.getElementById('stripe-url').value.trim()
+  };
+  localStorage.setItem('nmk-settings',JSON.stringify(s));
+  document.getElementById('settings-saved').style.display='inline';
+  showToast('設定を保存しました ✓');
+  toggleSettings();
+}
+function getSettings(){
+  return JSON.parse(localStorage.getItem('nmk-settings')||'{}');
+}
+function toggleSettings(){
+  const body=document.getElementById('settings-body');
+  const arrow=document.getElementById('settings-arrow');
   const open=body.classList.contains('open');
   body.classList.toggle('open',!open);
   arrow.style.transform=!open?'rotate(180deg)':'';
+}
+function showToast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg;t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2500);
+}
+
+// ターゲット
+['new','rewrite','hashtag'].forEach(m=>{
+  const w=document.getElementById('target-'+m+'-wrap');
+  if(w) w.appendChild(document.getElementById('target-tmpl').content.cloneNode(true));
+});
+function toggleCat(head){
+  const body=head.nextElementSibling;
+  const open=body.classList.contains('open');
+  body.classList.toggle('open',!open);
+  head.querySelector('.target-cat-arrow').style.transform=!open?'rotate(180deg)':'';
 }
 function toggleChip(chip){
   chip.classList.toggle('selected');
@@ -414,11 +482,13 @@ function switchTab(name){
 }
 function switchSns(mode,sns){
   const other=sns==='x'?'threads':'x';
-  document.getElementById('sns-'+sns+'-'+mode).classList.add('active');
-  document.getElementById('sns-'+other+'-'+mode).classList.remove('active');
-  document.getElementById('tab-'+sns+'-'+mode).classList.add('active-'+sns);
-  document.getElementById('tab-'+other+'-'+mode).classList.remove('active-'+other);
+  document.getElementById('pane-x-'+mode).classList.toggle('active',sns==='x');
+  document.getElementById('pane-th-'+mode).classList.toggle('active',sns==='threads');
+  const tabs=document.getElementById('sec-sns-'+mode||document.querySelector('#pane-x-'+mode).closest('.out-section')).querySelectorAll('.sns-tab');
+  tabs[0].className='sns-tab'+(sns==='x'?' ax':'');
+  tabs[1].className='sns-tab'+(sns==='threads'?' ath':'');
 }
+
 document.getElementById('rewrite-input').addEventListener('input',function(){
   document.getElementById('char-count').textContent=this.value.length+'文字';
 });
@@ -427,153 +497,206 @@ function getSelectedTypes(){
   return Array.from(document.querySelectorAll('.rtype.selected')).map(e=>e.dataset.type);
 }
 
-async function callClaude(system,user){
-  const res=await fetch(API_URL,{
-    method:'POST',
-    headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:2000,system,messages:[{role:'user',content:user}]})
-  });
-  const data=await res.json();
-  return data.content?.[0]?.text||'エラーが発生しました。';
+async function api(system,user,maxTokens=2000){
+  const res=await fetch(API,{method:'POST',headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:maxTokens,system,messages:[{role:'user',content:user}]})});
+  const d=await res.json();
+  return d.content?.[0]?.text||'エラーが発生しました。';
 }
+function parseJSON(raw){return JSON.parse(raw.replace(/```json|```/g,'').trim())}
 
-async function generateCTA(mode){
-  const wrap=document.getElementById('cta-'+mode+'-wrap');
-  const appName=wrap.querySelector('.cta-app-name').value.trim();
-  const appUrl=wrap.querySelector('.cta-app-url').value.trim();
-  const stripeUrl=wrap.querySelector('.cta-stripe-url').value.trim();
-  if(!appName){alert('アプリ名を入力してください');return;}
-  if(!appUrl){alert('アプリURLを入力してください');return;}
-  const articleText=document.getElementById('output-'+mode+'-text').textContent.slice(0,300);
-  const target=getTargets(mode);
-  const btn=wrap.querySelector('.cta-generate-btn');
-  const loading=wrap.querySelector('.cta-loading');
-  const resultWrap=wrap.querySelector('.cta-result-wrap');
-  btn.disabled=true;loading.classList.add('show');resultWrap.classList.remove('show');
-
-  const system=`あなたはnoteのCTAコピーライターです。読者が自然にクリックしたくなるCTA文を書くのが得意です。JSON形式のみで返してください。コードブロック不要。{"mid":"中間CTA文","end":"末尾CTA文"}`;
-  const user=`以下の情報をもとに、noteに挿入するCTA文を2種類生成してください。
-
-アプリ名：${appName}
-アプリURL：${appUrl}
-StripeURL（有料版）：${stripeUrl||'なし'}
-ターゲット：${target}
-記事概要：${articleText}
-
-中間CTA文（150文字程度）の条件：
-・記事を読んでいる途中で「このアプリ気になる」と感じさせる自然な流れ
-・「まず無料で試してみる」という行動を促す
-・URLを末尾に含める（${appUrl}）
-・押しつけがましくなく、読者の悩みに寄り添う表現
-
-末尾CTA文（200文字程度）の条件：
-・記事を読み終えた満足感に乗せて行動を促す
-・無料版の紹介とStripe有料版への誘導を自然に両立する
-・「まず無料で試す→気に入ったら有料版へ」の導線を作る
-・アプリURL（${appUrl}）とStripeURL（${stripeUrl||'（有料版URL未設定）'}）を両方含める
-・温かみのある締めくくりにする`;
-
-  try{
-    const raw=await callClaude(system,user);
-    const data=JSON.parse(raw.replace(/```json|```/g,'').trim());
-    wrap.querySelector('.cta-mid-text').textContent=data.mid;
-    wrap.querySelector('.cta-end-text').textContent=data.end;
-    const midCopy=wrap.querySelector('.cta-mid-copy');
-    const endCopy=wrap.querySelector('.cta-end-copy');
-    midCopy.onclick=()=>copyRaw(data.mid,midCopy);
-    endCopy.onclick=()=>copyRaw(data.end,endCopy);
-    resultWrap.classList.add('show');
-  }catch(e){
-    wrap.querySelector('.cta-mid-text').textContent='生成に失敗しました。再試行してください。';
-    resultWrap.classList.add('show');
-  }
-  loading.classList.remove('show');btn.disabled=false;
+function setProgress(mode,activeId,doneIds=[]){
+  document.getElementById('progress-steps-'+mode).innerHTML=STEPS.map(s=>{
+    const done=doneIds.includes(s.id);
+    const active=s.id===activeId&&!done;
+    const cls=done?'done':active?'active':'wait';
+    const icon=done?'✅':active?'⏳':'○';
+    return `<div class="progress-step ${cls}"><span class="step-icon">${icon}</span>${s.label}</div>`;
+  }).join('');
 }
 
 async function suggestThemes(){
   const target=getTargets('new');
   const btn=document.getElementById('suggest-btn');
-  const loading=document.getElementById('loading-suggest');
   const boxes=document.getElementById('theme-boxes');
-  btn.disabled=true;loading.classList.add('show');boxes.classList.remove('show');
-  const system=`あなたはnote専門のコンテンツストラテジストです。JSON形式のみで返してください。コードブロック不要。{"themes":[{"label":"テーマ種別","title":"テーマタイトル","reason":"選んだ理由（30文字以内）"},{"label":"テーマ種別","title":"テーマタイトル","reason":"選んだ理由（30文字以内）"},{"label":"テーマ種別","title":"テーマタイトル","reason":"選んだ理由（30文字以内）"}]}`;
-  const user=`ターゲット読者：${target}
-このターゲットに刺さる今週書くべきnoteテーマを3つ提案してください。
-テーマ種別の例：課題解決型・事例紹介型・ノウハウ型・共感エピソード型など`;
+  btn.disabled=true;btn.textContent='💡 考え中...';
+  boxes.classList.remove('show');
   try{
-    const raw=await callClaude(system,user);
-    const data=JSON.parse(raw.replace(/```json|```/g,'').trim());
-    boxes.innerHTML=data.themes.map(t=>`
+    const raw=await api(
+      `あなたはnote専門のコンテンツストラテジストです。JSON形式のみで返してください。コードブロック不要。{"themes":[{"label":"種別","title":"タイトル","reason":"理由30文字以内"},{"label":"種別","title":"タイトル","reason":"理由30文字以内"},{"label":"種別","title":"タイトル","reason":"理由30文字以内"}]}`,
+      `ターゲット読者：${target}\nこのターゲットに刺さる今週書くべきnoteテーマを3つ提案してください。`
+    );
+    const d=parseJSON(raw);
+    boxes.innerHTML=d.themes.map(t=>`
       <div class="theme-box" onclick="setTheme('${t.title.replace(/'/g,"\\'")}')">
         <span class="theme-box-label">${t.label}</span>
         ${t.title}
-        <span style="font-size:11px;color:var(--muted);display:block;margin-top:3px">${t.reason}</span>
+        <div class="theme-box-reason">${t.reason}</div>
       </div>`).join('');
     boxes.classList.add('show');
   }catch(e){
     boxes.innerHTML='<p style="font-size:12px;color:#999">生成に失敗しました</p>';
     boxes.classList.add('show');
   }
-  loading.classList.remove('show');btn.disabled=false;
+  btn.disabled=false;btn.textContent='💡 ターゲットからnoteテーマを3つ提案してもらう';
 }
+function setTheme(t){document.getElementById('new-theme').value=t;}
 
-function setTheme(title){
-  document.getElementById('new-theme').value=title;
-  document.getElementById('new-theme').focus();
-}
+async function generateAll(mode){
+  const isNew=mode==='new';
+  let articleText='';
 
-async function generateTitles(mode){
-  const text=document.getElementById('output-'+mode+'-text').textContent;
-  if(!text)return;
-  const btn=document.getElementById('btn-title-'+mode);
-  const loading=document.getElementById('loading-title-'+mode);
-  const result=document.getElementById('title-result-'+mode);
-  btn.disabled=true;loading.classList.add('show');result.classList.remove('show');
-  const system=`あなたはnoteのタイトルコピーライターです。JSON形式のみで返してください。コードブロック不要。{"titles":["タイトル1","タイトル2","タイトル3"]}`;
-  const user=`以下のnote記事の内容をもとに、クリックされやすいタイトル案を3本生成してください。
-条件：20〜30文字程度、読者が思わずクリックしたくなる表現、数字や具体性を入れると効果的
-記事冒頭：${text.slice(0,300)}`;
-  try{
-    const raw=await callClaude(system,user);
-    const data=JSON.parse(raw.replace(/```json|```/g,'').trim());
-    result.innerHTML=data.titles.map((t,i)=>`
-      <div class="title-item">
-        <span class="title-item-text">案${i+1}：${t}</span>
-        <button class="title-copy" onclick="copyRaw('${t.replace(/'/g,"\\'")}',this)">コピー</button>
-      </div>`).join('');
-    result.classList.add('show');
-  }catch(e){
-    result.textContent='生成に失敗しました';result.classList.add('show');
+  if(isNew){
+    const theme=document.getElementById('new-theme').value.trim();
+    if(!theme){alert('記事テーマを入力してください');return;}
+  }else{
+    const text=document.getElementById('rewrite-input').value.trim();
+    if(!text){alert('リライトしたい文章を貼り付けてください');return;}
+    const types=getSelectedTypes();
+    if(!types.length){alert('改善タイプを1つ以上選択してください');return;}
   }
-  loading.classList.remove('show');btn.disabled=false;
-}
 
-async function generateLead(mode){
-  const text=document.getElementById('output-'+mode+'-text').textContent;
-  if(!text)return;
-  const btn=document.getElementById('btn-lead-'+mode);
-  const loading=document.getElementById('loading-lead-'+mode);
-  const result=document.getElementById('lead-result-'+mode);
-  btn.disabled=true;loading.classList.add('show');result.classList.remove('show');
-  const system=`あなたはnoteのプロライターです。`;
-  const user=`以下のnote記事の内容をもとに、noteのリード文（書き出し）を3パターン生成してください。
-条件：各パターン80〜120文字程度、読者が「続きを読みたい」と感じる文章
-パターン1：共感型、パターン2：問題提起型、パターン3：驚き・発見型
-記事冒頭：${text.slice(0,300)}
-各パターンを「【共感型】」「【問題提起型】」「【驚き・発見型】」のラベル付きで出力してください。`;
+  const btn=document.getElementById('btn-'+mode);
+  btn.disabled=true;
+  document.getElementById('progress-'+mode).classList.add('show');
+  document.getElementById('outputs-'+mode).classList.remove('show');
+  setProgress(mode,'article');
+
+  const target=getTargets(mode);
+  const settings=getSettings();
+  const appName=settings.appName||'';
+  const appUrl=settings.appUrl||'';
+  const stripeUrl=settings.stripeUrl||'';
+  const done=[];
+
+  const articleSystem=`あなたはnoteで多くのスキを獲得する中小企業専門のプロWebライターです。見出しは # を大見出し、## を中見出しとして使い、本文はテキストで書いてください。**などの装飾記号は使わないこと。`;
+
   try{
-    const raw=await callClaude(system,user);
-    result.innerHTML='';
-    result.textContent=raw;
-    result.classList.add('show');
-    const copyBtn=document.createElement('button');
-    copyBtn.className='copy-btn';copyBtn.textContent='📋 コピー';
-    copyBtn.onclick=()=>copyRaw(raw,copyBtn);
-    result.appendChild(copyBtn);
-  }catch(e){
-    result.textContent='生成に失敗しました';result.classList.add('show');
+    // STEP1: 記事生成
+    if(isNew){
+      const tone=document.getElementById('new-tone').value;
+      const length=document.getElementById('new-length').value;
+      const memo=document.getElementById('new-memo').value;
+      const theme=document.getElementById('new-theme').value.trim();
+      articleText=await api(articleSystem,
+        `テーマ：${theme}\nターゲット：${target}\n文体：${tone}\n構成・長さ：${length}\n補足：${memo||'なし'}\n条件：最初の3行で心をつかむ書き出し（見出しなし）、具体的な事例や数字を入れる、専門用語を使わない、読者が「自分のことだ」と感じる表現、最後にCTAで締める`);
+    }else{
+      const types=getSelectedTypes();
+      const text=document.getElementById('rewrite-input').value.trim();
+      const tone=document.getElementById('rewrite-tone').value;
+      articleText=await api(articleSystem,
+        `改善タイプ：${types.join('、')}\nターゲット：${target}\n文体：${tone}\n元の文章：\n${text}`);
+    }
+    document.getElementById('out-article-'+mode).textContent=articleText;
+    done.push('article');setProgress(mode,'titles',done);
+
+    const summary=articleText.slice(0,300);
+
+    // STEP2〜6 並列実行
+    const [titlesRaw,leadRaw,ctaRaw,thumbRaw,xRaw,thRaw]=await Promise.all([
+
+      api(`タイトルコピーライター。JSON形式のみ。{"titles":["案1","案2","案3"]}`,
+        `以下のnote記事の内容をもとにクリックされやすいタイトル案を3本生成。20〜30文字、数字や具体性を入れる。\n記事冒頭：${summary}`),
+
+      api(`noteプロライター。`,
+        `以下の記事をもとにリード文を3パターン。各80〜120文字。\nパターン1：共感型、パターン2：問題提起型、パターン3：驚き・発見型\n「【共感型】」「【問題提起型】」「【驚き・発見型】」ラベル付きで出力。\n記事冒頭：${summary}`),
+
+      api(`noteのCTAコピーライター。JSON形式のみ。{"mid":"中間CTA文","end":"末尾CTA文"}`,
+        `アプリ名：${appName||'（未設定）'}\nアプリURL：${appUrl||'（未設定）'}\nStripeURL：${stripeUrl||'（未設定）'}\nターゲット：${target}\n記事概要：${summary}\n\n中間CTA文（150文字程度）：記事途中で自然にアプリを紹介、無料体験を促す。URL含む。\n末尾CTA文（200文字程度）：無料→有料版への導線を両方含める。温かみある締め。`),
+
+      api(`MidJourney V8専門。JSON形式のみ。{"prompts":[{"type":"種別","prompt":"英語プロンプト"},{"type":"種別","prompt":"英語プロンプト"},{"type":"種別","prompt":"英語プロンプト"}]}`,
+        `キーワード：${summary.slice(0,50)}\nターゲット：${target}\nタイプ1：ビジネス・プロ系、タイプ2：温かみ・共感系、タイプ3：インパクト・モダン系\n各プロンプトは --ar 16:9 --v 6.1 --style raw を末尾に含めること。英語で。`),
+
+      api(`SNS集客プロ。JSON形式のみ。{"posts":[{"type":"種別","text":"投稿文"},{"type":"種別","text":"投稿文"},{"type":"種別","text":"投稿文"}]}`,
+        `記事概要：${summary}\nターゲット：${target}\nX（Twitter）集客投稿3パターン。各120文字以内（ハッシュタグ含む）。末尾に「👉 noteで全文読めます」。ハッシュタグ2〜3個。パターン1：問題提起型、パターン2：ビフォーアフター型、パターン3：共感・ストーリー型`),
+
+      api(`SNS集客プロ。JSON形式のみ。{"posts":[{"type":"種別","text":"投稿文"},{"type":"種別","text":"投稿文"},{"type":"種別","text":"投稿文"}]}`,
+        `記事概要：${summary}\nターゲット：${target}\nThreads集客投稿3パターン。各400〜500文字。改行を活用。末尾に「続きはnoteで👇」。ハッシュタグ3〜4個。パターン1：問題提起型、パターン2：ビフォーアフター型、パターン3：共感・ストーリー型`)
+    ]);
+
+    done.push('titles');setProgress(mode,'lead',done);
+
+    // タイトル表示
+    try{
+      const td=parseJSON(titlesRaw);
+      document.getElementById('out-titles-'+mode).innerHTML=td.titles.map((t,i)=>`
+        <div class="title-item">
+          <span class="title-text"><span class="title-no">案${i+1}</span>${t}</span>
+          <button class="copy-btn" onclick="copyRaw('${t.replace(/'/g,"\\'")}',this)">コピー</button>
+        </div>`).join('');
+    }catch(e){document.getElementById('out-titles-'+mode).textContent=titlesRaw;}
+
+    done.push('lead');setProgress(mode,'cta',done);
+
+    // リード文表示
+    document.getElementById('out-lead-'+mode).innerHTML=`<div style="white-space:pre-wrap;font-size:13px;line-height:1.9">${leadRaw}</div><button class="copy-btn" onclick="copyRaw(\`${leadRaw.replace(/`/g,'\\`')}\`,this)">📋 コピー</button>`;
+
+    done.push('cta');setProgress(mode,'thumb',done);
+
+    // CTA表示
+    try{
+      const cd=parseJSON(ctaRaw);
+      document.getElementById('out-cta-'+mode).innerHTML=`
+        <div class="cta-block">
+          <div class="cta-block-label">📍 中間CTA文 <span>記事の真ん中あたりに挿入</span></div>
+          <div class="cta-text" id="cta-mid-${mode}">${cd.mid}</div>
+          <button class="copy-btn" onclick="copyEl('cta-mid-${mode}')">コピー</button>
+        </div>
+        <div class="cta-block">
+          <div class="cta-block-label">🎯 末尾CTA文 <span>記事の最後に挿入</span></div>
+          <div class="cta-text" id="cta-end-${mode}">${cd.end}</div>
+          <button class="copy-btn" onclick="copyEl('cta-end-${mode}')">コピー</button>
+        </div>`;
+    }catch(e){document.getElementById('out-cta-'+mode).textContent=ctaRaw;}
+
+    done.push('thumb');setProgress(mode,'sns',done);
+
+    // サムネ表示
+    try{
+      const thd=parseJSON(thumbRaw);
+      document.getElementById('out-thumb-'+mode).innerHTML=thd.prompts.map((p,i)=>`
+        <div class="thumb-card">
+          <div class="thumb-type">タイプ${i+1}：${p.type}</div>
+          <div class="thumb-prompt" id="tp${i}-${mode}">${p.prompt}</div>
+          <button class="copy-btn" onclick="copyEl('tp${i}-${mode}')">コピー</button>
+        </div>`).join('');
+    }catch(e){document.getElementById('out-thumb-'+mode).textContent=thumbRaw;}
+
+    done.push('sns');setProgress(mode,'',done);
+
+    // X表示
+    try{
+      const xd=parseJSON(xRaw);
+      document.getElementById('out-x-'+mode).innerHTML=xd.posts.map((p,i)=>{
+        const len=p.text.length;const over=len>140;
+        return `<div class="post-card">
+          <div class="post-meta post-type-x"><span>𝕏 ${p.type}</span><span class="char-badge${over?' over':''}">${len}文字</span></div>
+          <div class="post-body" id="xp${i}-${mode}">${p.text}</div>
+          <button class="copy-btn" onclick="copyEl('xp${i}-${mode}')">コピー</button>
+        </div>`;
+      }).join('');
+    }catch(e){document.getElementById('out-x-'+mode).textContent=xRaw;}
+
+    // Threads表示
+    try{
+      const thpd=parseJSON(thRaw);
+      document.getElementById('out-th-'+mode).innerHTML=thpd.posts.map((p,i)=>`
+        <div class="post-card">
+          <div class="post-meta"><span>🧵 ${p.type}</span><span class="char-badge">${p.text.length}文字</span></div>
+          <div class="post-body" id="thp${i}-${mode}">${p.text}</div>
+          <button class="copy-btn" onclick="copyEl('thp${i}-${mode}')">コピー</button>
+        </div>`).join('');
+    }catch(e){document.getElementById('out-th-'+mode).textContent=thRaw;}
+
+    document.getElementById('progress-'+mode).classList.remove('show');
+    document.getElementById('outputs-'+mode).classList.add('show');
+    showToast('全て生成完了しました ✓');
+
+  }catch(err){
+    showToast('エラーが発生しました。再試行してください。');
+    document.getElementById('progress-'+mode).classList.remove('show');
   }
-  loading.classList.remove('show');btn.disabled=false;
+  btn.disabled=false;
 }
 
 async function generateHashtags(){
@@ -582,196 +705,41 @@ async function generateHashtags(){
   const target=getTargets('hashtag');
   const btn=document.getElementById('btn-hashtag');
   btn.disabled=true;
-  document.getElementById('loading-hashtag').classList.add('show');
-  document.getElementById('output-hashtag').classList.remove('show');
-  const system=`あなたはSNSハッシュタグの専門家です。JSON形式のみで返してください。コードブロック不要。{"note":["タグ1","タグ2","タグ3","タグ4","タグ5"],"x":["タグ1","タグ2","タグ3","タグ4","タグ5"],"threads":["タグ1","タグ2","タグ3","タグ4","タグ5"],"instagram":["タグ1","タグ2","タグ3","タグ4","タグ5","タグ6","タグ7","タグ8","タグ9","タグ10"]}`;
-  const user=`テーマ：${theme}
-ターゲット：${target}
-各SNS向けに最適なハッシュタグを生成してください。
-note：5個（日本語、拡散しやすいもの）
-X：5個（日本語、トレンドを意識）
-Threads：5個（日本語、コミュニティ重視）
-Instagram：10個（日本語・英語混在OK、リーチ重視）
-#は付けずにタグ名だけ返してください。`;
+  document.getElementById('progress-hashtag').classList.add('show');
+  document.getElementById('outputs-hashtag').classList.remove('show');
   try{
-    const raw=await callClaude(system,user);
-    const data=JSON.parse(raw.replace(/```json|```/g,'').trim());
+    const raw=await api(
+      `SNSハッシュタグ専門家。JSON形式のみ。{"note":["t1","t2","t3","t4","t5"],"x":["t1","t2","t3","t4","t5"],"threads":["t1","t2","t3","t4","t5"],"instagram":["t1","t2","t3","t4","t5","t6","t7","t8","t9","t10"]}`,
+      `テーマ：${theme}\nターゲット：${target}\nnote5個（日本語）、X5個（トレンド重視）、Threads5個（コミュニティ重視）、Instagram10個（日英混在OK）。#なしでタグ名のみ。`
+    );
+    const d=parseJSON(raw);
     const platforms=[
       {key:'note',label:'📝 note',color:'#41c9b4'},
-      {key:'x',label:'𝕏 X（Twitter）',color:'#000'},
+      {key:'x',label:'𝕏 X',color:'#000'},
       {key:'threads',label:'🧵 Threads',color:'#1a1a1a'},
       {key:'instagram',label:'📸 Instagram',color:'#e1306c'}
     ];
     document.getElementById('hash-grid').innerHTML=platforms.map(p=>`
-      <div class="hash-card" style="${p.key==='instagram'?'grid-column:1 / -1':''}">
+      <div class="hash-card" style="${p.key==='instagram'?'grid-column:1/-1':''}">
         <div class="hash-card-title" style="color:${p.color}">${p.label}</div>
-        <div id="hash-${p.key}">${(data[p.key]||[]).map(t=>`<span class="hash-tag">#${t}</span>`).join('')}</div>
-        <button class="copy-btn" style="margin-top:8px" onclick="copyRaw('${(data[p.key]||[]).map(t=>'#'+t).join(' ').replace(/'/g,"\\'")}',this)">コピー</button>
+        <div id="hg-${p.key}">${(d[p.key]||[]).map(t=>`<span class="hash-tag">#${t}</span>`).join('')}</div>
+        <button class="copy-btn" onclick="copyRaw('${(d[p.key]||[]).map(t=>'#'+t).join(' ').replace(/'/g,"\\'")}',this)">コピー</button>
       </div>`).join('');
-    document.getElementById('output-hashtag').classList.add('show');
+    document.getElementById('outputs-hashtag').classList.add('show');
   }catch(e){
-    document.getElementById('hash-grid').innerHTML='<p style="font-size:12px;color:#999">生成に失敗しました</p>';
-    document.getElementById('output-hashtag').classList.add('show');
+    showToast('生成に失敗しました');
   }
-  document.getElementById('loading-hashtag').classList.remove('show');btn.disabled=false;
+  document.getElementById('progress-hashtag').classList.remove('show');
+  btn.disabled=false;
 }
 
-async function generateThumbPrompts(title,keywords,container){
-  const system=`あなたはMidJourney V8専門のプロンプトエンジニアです。JSON形式のみで返してください。コードブロック不要。{"prompts":[{"type":"タイプ名","prompt":"英語プロンプト"},{"type":"タイプ名","prompt":"英語プロンプト"},{"type":"タイプ名","prompt":"英語プロンプト"}]}`;
-  const user=`記事タイトル：${title}
-キーワード：${keywords}
-以下3タイプのMidJourney V8サムネプロンプトを英語で生成してください。
-タイプ1：ビジネス・プロ系（信頼感・清潔感）
-タイプ2：温かみ・共感系（人物・ストーリー感）
-タイプ3：インパクト・モダン系（グラフィカル・目を引く）
-各プロンプトは --ar 16:9 --v 6.1 --style raw を末尾に含めること。`;
-  try{
-    const raw=await callClaude(system,user);
-    const data=JSON.parse(raw.replace(/```json|```/g,'').trim());
-    document.getElementById(container).innerHTML=data.prompts.map((p,i)=>`
-      <div class="thumb-card">
-        <div class="thumb-type">タイプ${i+1}：${p.type}</div>
-        <div class="thumb-prompt" id="tp${i}-${container}">${p.prompt}</div>
-        <button class="copy-btn" onclick="copyText('tp${i}-${container}')">コピー</button>
-      </div>`).join('');
-    document.getElementById(container).closest('.thumb-section').classList.add('show');
-  }catch(e){
-    document.getElementById(container).innerHTML='<p style="font-size:12px;color:#999">プロンプト生成に失敗しました</p>';
-    document.getElementById(container).closest('.thumb-section').classList.add('show');
-  }
-}
-
-async function generateSNSPosts(articleSummary,target,mode){
-  const xSystem=`あなたはSNS集客のプロです。JSON形式のみで返してください。コードブロック不要。{"posts":[{"type":"パターン名","text":"投稿文"},{"type":"パターン名","text":"投稿文"},{"type":"パターン名","text":"投稿文"}]}`;
-  const xUser=`以下のnote記事の要約をもとに、X（Twitter）集客投稿を3パターン生成してください。
-記事概要：${articleSummary}
-ターゲット：${target}
-条件：各投稿は120文字以内（ハッシュタグ含む）、末尾に「👉 noteで全文読めます」を入れること、ハッシュタグは2〜3個
-パターン1：問題提起型、パターン2：ビフォーアフター型、パターン3：共感・ストーリー型`;
-  const thSystem=`あなたはSNS集客のプロです。JSON形式のみで返してください。コードブロック不要。{"posts":[{"type":"パターン名","text":"投稿文"},{"type":"パターン名","text":"投稿文"},{"type":"パターン名","text":"投稿文"}]}`;
-  const thUser=`以下のnote記事の要約をもとに、Threads集客投稿を3パターン生成してください。
-記事概要：${articleSummary}
-ターゲット：${target}
-条件：各投稿は400〜500文字程度、改行を活用してスマホで読みやすくすること、末尾に「続きはnoteで👇」を入れること、ハッシュタグは3〜4個
-パターン1：問題提起型、パターン2：ビフォーアフター型、パターン3：共感・ストーリー型`;
-  try{
-    const [xRaw,thRaw]=await Promise.all([callClaude(xSystem,xUser),callClaude(thSystem,thUser)]);
-    const xData=JSON.parse(xRaw.replace(/```json|```/g,'').trim());
-    const thData=JSON.parse(thRaw.replace(/```json|```/g,'').trim());
-    document.getElementById('x-posts-'+mode).innerHTML=xData.posts.map((p,i)=>{
-      const len=p.text.length;const over=len>140;
-      return `<div class="post-card">
-        <div class="post-type post-type-x"><span>𝕏 ${p.type}</span><span class="char-badge${over?' over':''}">${len}文字</span></div>
-        <div class="post-text" id="xp${i}-${mode}">${p.text}</div>
-        <button class="copy-btn" onclick="copyText('xp${i}-${mode}')">コピー</button>
-      </div>`;
-    }).join('');
-    document.getElementById('threads-posts-'+mode).innerHTML=thData.posts.map((p,i)=>`
-      <div class="post-card">
-        <div class="post-type post-type-threads"><span>🧵 ${p.type}</span><span class="char-badge">${p.text.length}文字</span></div>
-        <div class="post-text" id="thp${i}-${mode}">${p.text}</div>
-        <button class="copy-btn" onclick="copyText('thp${i}-${mode}')">コピー</button>
-      </div>`).join('');
-    document.getElementById('sns-'+mode).classList.add('show');
-  }catch(e){
-    document.getElementById('x-posts-'+mode).innerHTML='<p style="font-size:12px;color:#999">生成に失敗しました</p>';
-    document.getElementById('sns-'+mode).classList.add('show');
-  }
-}
-
-async function generateNew(){
-  const theme=document.getElementById('new-theme').value.trim();
-  if(!theme){alert('記事テーマを入力してください');return;}
-  const target=getTargets('new');
-  const tone=document.getElementById('new-tone').value;
-  const length=document.getElementById('new-length').value;
-  const memo=document.getElementById('new-memo').value;
-  setLoading('new',true);
-  const system=`あなたはnoteで多くのスキを獲得する中小企業専門のプロWebライターです。
-見出しは # を大見出し、## を中見出しとして使い、本文はテキストで書いてください。
-**などの装飾記号は使わないこと。`;
-  const user=`以下の条件でnote記事を書いてください。
-テーマ：${theme}
-ターゲット：${target}
-文体：${tone}
-構成・長さ：${length}
-補足：${memo||'なし'}
-条件：
-・最初の3行で読者の心をつかむ書き出しにすること（見出しなしで書き始める）
-・具体的な事例や数字を入れること
-・専門用語は使わずわかりやすい言葉で書くこと
-・読者が「自分のことだ」と感じる表現を意識すること
-・最後に行動を促すCTAで締めること`;
-  try{
-    const result=await callClaude(system,user);
-    document.getElementById('output-new-text').textContent=result;
-    document.getElementById('output-new').classList.add('show');
-    document.getElementById('title-result-new').classList.remove('show');
-    document.getElementById('lead-result-new').classList.remove('show');
-    document.getElementById('cta-new-wrap').querySelector('.cta-result-wrap').classList.remove('show');
-    await Promise.all([
-      generateThumbPrompts(theme,target,'thumb-new-cards'),
-      generateSNSPosts(result.slice(0,200),target,'new')
-    ]);
-  }catch(e){
-    document.getElementById('output-new-text').textContent='エラーが発生しました。しばらくしてから再試行してください。';
-    document.getElementById('output-new').classList.add('show');
-  }
-  setLoading('new',false);
-}
-
-async function generateRewrite(){
-  const text=document.getElementById('rewrite-input').value.trim();
-  if(!text){alert('リライトしたい文章を貼り付けてください');return;}
-  const types=getSelectedTypes();
-  if(types.length===0){alert('改善タイプを1つ以上選択してください');return;}
-  const target=getTargets('rewrite');
-  setLoading('rewrite',true);
-  const system=`あなたはnoteで多くのスキを獲得する中小企業専門のプロWebライターです。
-見出しは # を大見出し、## を中見出しとして使い、本文はテキストで書いてください。
-**などの装飾記号は使わないこと。`;
-  const user=`以下の文章を改善してください。
-改善タイプ：${types.join('、')}
-ターゲット読者：${target}
-元の文章：
-${text}
-元の文章の意図を維持しながら指定された改善を施してください。`;
-  try{
-    const result=await callClaude(system,user);
-    document.getElementById('output-rewrite-text').textContent=result;
-    document.getElementById('output-rewrite').classList.add('show');
-    document.getElementById('title-result-rewrite').classList.remove('show');
-    document.getElementById('lead-result-rewrite').classList.remove('show');
-    document.getElementById('cta-rewrite-wrap').querySelector('.cta-result-wrap').classList.remove('show');
-    await Promise.all([
-      generateThumbPrompts(text.split('\n')[0].slice(0,30),target,'thumb-rewrite-cards'),
-      generateSNSPosts(result.slice(0,200),target,'rewrite')
-    ]);
-  }catch(e){
-    document.getElementById('output-rewrite-text').textContent='エラーが発生しました。しばらくしてから再試行してください。';
-    document.getElementById('output-rewrite').classList.add('show');
-  }
-  setLoading('rewrite',false);
-}
-
-function setLoading(mode,on){
-  document.getElementById('loading-'+mode).classList.toggle('show',on);
-  document.getElementById('btn-'+mode).disabled=on;
-  if(on){
-    document.getElementById('output-'+mode).classList.remove('show');
-    document.getElementById('sns-'+mode).classList.remove('show');
-    document.getElementById('thumb-'+mode).classList.remove('show');
-  }
-}
-function copyText(id){
+function copyEl(id){
   const el=document.getElementById(id);if(!el)return;
   navigator.clipboard.writeText(el.textContent).then(()=>{
     const btns=el.parentElement.querySelectorAll('.copy-btn,.copy-all-btn');
-    btns.forEach(btn=>{const o=btn.textContent;btn.textContent='✅ コピーしました';setTimeout(()=>btn.textContent=o,2000);});
+    btns.forEach(b=>{const o=b.textContent;b.textContent='✅ コピーしました';setTimeout(()=>b.textContent=o,2000);});
   }).catch(()=>{
-    const r=document.createRange();r.selectNode(el);
-    window.getSelection().removeAllRanges();window.getSelection().addRange(r);
-    document.execCommand('copy');
+    const r=document.createRange();r.selectNode(el);window.getSelection().removeAllRanges();window.getSelection().addRange(r);document.execCommand('copy');
   });
 }
 function copyRaw(text,btn){
@@ -779,6 +747,8 @@ function copyRaw(text,btn){
     const o=btn.textContent;btn.textContent='✅ コピーしました';setTimeout(()=>btn.textContent=o,2000);
   });
 }
+
+loadSettings();
 </script>
 </body>
 </html>
